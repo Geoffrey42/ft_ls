@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/21 09:24:38 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/21 12:02:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_btree		*directories_list;
-	int			*flags;
+	t_list	*a_effacer;
+	t_list	*prochain_maillon;
 
-	directories_list = NULL;
-	if ((flags = parse_flags(ac, av)) == NULL)
-		return (1);
-	//if (check_if_directories(ac, av))
-	//	av = cut_flags_arguments(ac, av);
-	directories_list = sort_directories(directories_list, ac, av);
-	sort_and_display_content(directories_list, flags);
-	return (0);
+	a_effacer = *alst;
+	while (a_effacer)
+	{
+		prochain_maillon = a_effacer->next;
+		del(a_effacer->content, a_effacer->content_size);
+		free(a_effacer);
+		a_effacer = prochain_maillon;
+	}
+	*alst = NULL;
 }

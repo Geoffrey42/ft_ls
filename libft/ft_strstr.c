@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/12 20:09:43 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/22 09:58:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strstr(const char *big, const char *little)
 {
-	t_btree		*directories_list;
-	int			*flags;
+	int		i;
+	int		j;
+	char	*pt;
 
-	directories_list = NULL;
-	if ((flags = parse_flags(ac, av)) == NULL)
-		return (1);
-	//if (check_if_directories(ac, av))
-	//	av = cut_flags_arguments(ac, av);
-	directories_list = sort_directories(directories_list, ac, av);
-	sort_and_display_content(directories_list, flags);
+	i = 0;
+	pt = 0;
+	if (little[i] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0')
+	{
+		if (big[i] == little[0])
+		{
+			pt = (char *)big + i;
+			j = 0;
+			while (big[i + j] == little[j])
+			{
+				if (little[j + 1] == '\0')
+					return (pt);
+				j++;
+			}
+			pt = 0;
+		}
+		i++;
+	}
 	return (0);
 }

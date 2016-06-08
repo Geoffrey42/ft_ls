@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/10 20:48:40 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/10 22:43:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_btree		*directories_list;
-	int			*flags;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
-	directories_list = NULL;
-	if ((flags = parse_flags(ac, av)) == NULL)
-		return (1);
-	//if (check_if_directories(ac, av))
-	//	av = cut_flags_arguments(ac, av);
-	directories_list = sort_directories(directories_list, ac, av);
-	sort_and_display_content(directories_list, flags);
+	p1 = (unsigned char *)s1;
+	p2 = (unsigned char *)s2;
+	while (n > 0)
+	{
+		if (*p1 != *p2)
+			return (*p1 - *p2);
+		p1++;
+		p2++;
+		n--;
+	}
 	return (0);
 }

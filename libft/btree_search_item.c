@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_parsed_flags.c                                 :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 14:15:17 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:05 by ggane            ###   ########.fr       */
+/*   Created: 2016/02/03 08:58:38 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/04 14:11:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		check_if_directories(int ac, char **av)
+void	*btree_search_item(t_btree *root, void *data_ref,
+		int (*cmpf)(void *, void *))
 {
-	int		i;
-
-	i = 1;
-	while (i < ac)
+	if (is_empty(root))
 	{
-		if (av[i][0] != '-')
-			return (1);
-		i++;
+		if (cmpf(data_ref, root->item) < 0)
+			return (btree_search_item(root->left, data_ref, cmpf));
+		else if (cmpf(data_ref, root->item) == 0)
+			return (root->item);
+		else if (cmpf(data_ref, root->item) > 0)
+			return (btree_search_item(root->right, data_ref, cmpf));
 	}
-	return (0);
-}
-
-char	**cut_parsed_flags(char **av)
-{
-	av++;
-	while (**av == '-' && av != NULL)
-		av++;
-	return (av);
+	return (NULL);
 }

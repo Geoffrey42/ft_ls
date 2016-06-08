@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/11 10:45:13 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/11 11:25:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	t_btree		*directories_list;
-	int			*flags;
+	unsigned int	i;
+	unsigned int	j;
 
-	directories_list = NULL;
-	if ((flags = parse_flags(ac, av)) == NULL)
-		return (1);
-	//if (check_if_directories(ac, av))
-	//	av = cut_flags_arguments(ac, av);
-	directories_list = sort_directories(directories_list, ac, av);
-	sort_and_display_content(directories_list, flags);
-	return (0);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		i++;
+	while (s2[j])
+	{
+		s1[i] = s2[j];
+		i++;
+		j++;
+	}
+	s1[i] = '\0';
+	return (s1);
 }

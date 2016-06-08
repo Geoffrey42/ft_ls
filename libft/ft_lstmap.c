@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/22 07:49:35 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/22 07:52:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_btree		*directories_list;
-	int			*flags;
+	t_list	*tmp;
+	t_list	*lstnew;
+	t_list	*res;
 
-	directories_list = NULL;
-	if ((flags = parse_flags(ac, av)) == NULL)
-		return (1);
-	//if (check_if_directories(ac, av))
-	//	av = cut_flags_arguments(ac, av);
-	directories_list = sort_directories(directories_list, ac, av);
-	sort_and_display_content(directories_list, flags);
-	return (0);
+	lstnew = NULL;
+	while (lst)
+	{
+		tmp = f(lst);
+		if (!lstnew)
+		{
+			lstnew = tmp;
+			res = lstnew;
+			lstnew->next = NULL;
+		}
+		else
+		{
+			lstnew->next = tmp;
+			tmp->next = NULL;
+			lstnew = lstnew->next;
+		}
+		lst = lst->next;
+	}
+	return (res);
 }

@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_parsed_flags.c                                 :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 14:15:17 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:05 by ggane            ###   ########.fr       */
+/*   Created: 2016/04/24 09:17:42 by ggane             #+#    #+#             */
+/*   Updated: 2016/04/25 09:02:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		check_if_directories(int ac, char **av)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		i;
+	size_t	i;
+	size_t	j;
+	size_t	len_dst;
 
-	i = 1;
-	while (i < ac)
-	{
-		if (av[i][0] != '-')
-			return (1);
+	i = 0;
+	j = 0;
+	len_dst = ft_strlen(dst);
+	while (dst[i] != '\0' && i < size)
 		i++;
-	}
-	return (0);
-}
-
-char	**cut_parsed_flags(char **av)
-{
-	av++;
-	while (**av == '-' && av != NULL)
-		av++;
-	return (av);
+	while (src[j] != '\0' && i < size - 1)
+		dst[i++] = src[j++];
+	if (size != 0 && size >= len_dst)
+		dst[i] = '\0';
+	if (size < ft_strlen(dst))
+		return (ft_strlen(src) + size);
+	else
+		return (ft_strlen(src) + len_dst);
 }
