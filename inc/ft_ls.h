@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/15 20:17:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,21 @@
 # include <sys/stat.h>
 # include "../libft/libft.h"
 
+# define FLAGS_SIZE 255
+
 /* parser.c */
-int		check_authorized_flags(char *to_check, int *flags);
-int		*parse_flags(int ac, char **av);
+int			*parse_flags(int ac, char **av);
+int			check_authorized_flags(char *option, int *flags);
 
 /* display.c */
-void	display_error_flag(char wrong_flag);
-void	display_usage(void);
+void		display_flags_error_msg(char bad_option);
 
-/* cut_parsed_flags.c */
-int		check_if_directories(int ac, char **av);
-char	**cut_parsed_flags(char **av);
+/* sort_directories.c */
+t_btree		*put_directories_in_a_tree(int start, int ac, char **av);
+int			check_directories_presence(int ac, char **av);
+t_btree		*sort_directories(int ac, char **av);
+
+/* call_back_functions.c */
+int			cb_ft_strcmp(void *s1, void *s2);
 
 #endif

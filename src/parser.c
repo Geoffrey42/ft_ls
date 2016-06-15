@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 18:58:29 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:10 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/15 09:26:05 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/15 09:27:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int		check_authorized_flags(char *to_check, int *flags)
 			flags[to_check[i]] = 1;
 		else
 		{
-			display_error_flag(to_check[i]);
-			display_usage();
+			display_flags_error_msg(to_check[i]);
 			return (1);
 		}
 		i++;
@@ -40,8 +39,7 @@ int		*parse_flags(int ac, char **av)
 	int		i;
 
 	i = 1;
-	flags = (int *)malloc(sizeof(int) * 255);
-	if (!flags)
+	if (!(flags = (int *)ft_memalloc(FLAGS_SIZE)))
 		return (NULL);
 	while (i <= ac - 1 && ft_strcmp(av[i], "--"))
 	{

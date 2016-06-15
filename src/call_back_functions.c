@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_parsed_flags.c                                 :+:      :+:    :+:   */
+/*   call_back_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/07 14:15:17 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/08 13:07:05 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/15 20:19:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int		check_if_directories(int ac, char **av)
+int		cb_ft_strcmp(void *s1, void *s2)
 {
-	int		i;
-
-	i = 1;
-	while (i < ac)
-	{
-		if (av[i][0] != '-')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-char	**cut_parsed_flags(char **av)
-{
-	av++;
-	while (**av == '-' && av != NULL)
-		av++;
-	return (av);
+	return (ft_strcmp(s1, s2));
 }
