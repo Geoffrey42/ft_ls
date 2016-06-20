@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 19:29:27 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/13 14:54:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/20 17:31:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ void	affiche_flags(int *flags)
 
 int		main(int ac, char **av)
 {
-	int		*flags;
+	t_info	*info_line;
 
-	flags = parse_flags(ac, av);
-	affiche_flags(flags);
-	free(flags);
+	ft_putendl("start main");
+	info_line = NULL;
+	info_line = parse_flags(ac, av, info_line);
+	ft_putendl("parse ok");
+	affiche_flags(info_line->flags);
+	ft_putendl("end main");
+	//free(flags);
 	return (0);
 }
