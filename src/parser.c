@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:26:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 19:14:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/20 20:02:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,8 @@ int			check_authorized_flags(char *to_check, t_info *info_line)
 
 	i = 1;
 	while (to_check[i])
-	{
-		if (add_flags(to_check, info_line, i))
+		if (add_flags(to_check, info_line, i++))
 			return (1);
-		i++;
-	}
 	return (0);
 }
 
@@ -71,11 +68,8 @@ int			parse_flags(int ac, char **av, t_info *info_line)
 	info_line = initialize_info_line(info_line);
 	i = 1;
 	while (i <= ac - 1 && ft_strcmp(av[i], "--"))
-	{
-		if (check_authorized_flags(av[i], info_line))
+		if (check_authorized_flags(av[i++], info_line))
 			return (1);
-		i++;
-	}
 	if (i < ac)
 		info_line = set_directories_info(info_line, i);
 	return (0);

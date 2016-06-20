@@ -1,12 +1,12 @@
 #!/bin/sh
 gcc tests_parser.c src/parser.c src/display.c inc/ft_ls.h libft/libft.a
 echo "tests sur parseur\n"
-echo "test 1 : ./a.out -a\n"
-./a.out -a
+echo "test 1 : ./a.out -a src\n"
+./a.out -a src
 echo "\ntest 2 : ./a.out -l -t\n"
 ./a.out -l -t
-echo "\ntest 3 : ./a.out -a -r -l -R -t\n"
-./a.out -a -r -l -R -t
+echo "\ntest 3 : ./a.out -a -r -l -R -t tests src\n"
+./a.out -a -r -l -R -t tests src
 echo "\ntest 4 : ./a.out -arlRt\n"
 ./a.out -arlRt
 echo "\ntest 5 : ./a.out -ttttttt\n"

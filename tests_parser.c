@@ -6,11 +6,21 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 19:29:27 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 19:17:28 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/20 19:58:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "inc/ft_ls.h"
+
+void	check_dir(t_info *info_line)
+{
+	printf("Il y a t'il des dossiers ?\n");
+	printf((info_line->directory_presence) ? "oui\n" : "non\n");
+	printf("Quelle est la position du 1er dossier ?\n");
+	printf((info_line->directory_position == -1) ? "Il n'y en a pas !\n" : "C'est : ");
+	if (info_line->directory_presence)
+		printf("%d\n", info_line->directory_position);
+}
 
 void	affiche_flags(int flags)
 {
@@ -36,5 +46,6 @@ int		main(int ac, char **av)
 	if (parse_flags(ac, av, &info_line))
 		return (1);
 	affiche_flags(info_line.flags);
+	check_dir(&info_line);
 	return (0);
 }
