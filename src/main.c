@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 17:32:04 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/20 18:50:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,10 @@
 int		main(int ac, char **av)
 {
 	t_btree		*directories_to_sort;
-	t_info		*info_line;
+	t_info		info_line;
 
 	directories_to_sort = NULL;
-	info_line = NULL;
-	if (!(info_line = parse_flags(ac, av, info_line)))
+	if (!(parse_flags(ac, av, &info_line)))
 		return (1);
 	directories_to_sort = sort_directories(info_line, av);
 	sort_content(info_line, directories_to_sort);

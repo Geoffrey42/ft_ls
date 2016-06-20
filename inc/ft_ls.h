@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 17:35:25 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/20 19:13:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@
 # include "../libft/libft.h"
 
 # define FLAGS_SIZE 255
+# define LOW_A_FLAG 1
+# define LOW_T_FLAG 2
+# define LOW_L_FLAG 4
+# define LOW_R_FLAG 8
+# define UPP_R_FLAG 16
 
 typedef struct	s_info
 {
@@ -29,10 +34,10 @@ typedef struct	s_info
 
 /* parser.c */
 t_info			*set_directories(t_info *info_line, int start);
-int				add_flags(char *to_check, int ***flags, int i);
-int				check_authorized_flags(char *option, int **flags);
+int				add_flags(char *to_check, t_info *info_line, int i);
+int				check_authorized_flags(char *to_check, t_info *info_line);
 t_info			*initialize_info_line(t_info *info_line);
-t_info			*parse_flags(int ac, char **av, t_info *info_line);
+int				parse_flags(int ac, char **av, t_info *info_line);
 
 /* display.c */
 void			display_flags_error_msg(char bad_option);
