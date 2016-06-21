@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 22:10:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 22:42:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ typedef struct	s_info
 	int			nb_directories;
 }				t_info;
 
+/* info_line.c */
+t_info			*set_directories_info(t_info *info_line, int ac, char **av);
+t_info			*initialize_info_line(t_info *info_line);
+
 /* parser.c */
-t_info			*set_directories(t_info *info_line, int ac, char **av);
 int				add_flags(char *to_check, t_info *info_line, int i);
 int				check_authorized_flags(char *to_check, t_info *info_line);
-t_info			*initialize_info_line(t_info *info_line);
 int				walkthrough_command_line(int ac, char **av, t_info *info_line);
 int				parse_flags(int ac, char **av, t_info *info_line);
 
@@ -56,7 +58,6 @@ t_btree			*sort_directories
 
 /* call_back_functions.c */
 void			cb_ft_putendl(void *str);
-int				check_nanosec(void *item1, void *item2);
 int				cb_ft_timecmp(void *item1, void *item2);
 int				cb_ft_strcmp(void *s1, void *s2);
 
