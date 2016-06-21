@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 16:11:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 20:06:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,26 @@ t_btree		*put_directories_in_a_tree
 {
 	int			(*cmpf)(void *, void *);
 
-	if (info_line->flags & LOW_T_FLAG)
+	if (info_line->flags & LOW_T_FLAG && info_line->flags & LOW_R_FLAG)
+	{
+	//	printf("\t\tLOW_T_FLAG and LOW_R_FLAG\n");
+		cmpf = &cb_ft_revtimecmp;
+	}
+	else if (info_line->flags & LOW_R_FLAG)
+	{
+	//	printf("\t\tLOW_R_FLAG ONLY\n");
+		cmpf = &cb_ft_revstrcmp;
+	}
+	else if (info_line->flags & LOW_T_FLAG)
+	{
+	//	printf("\t\tLOW_T_FLAG ONLY\n");
 		cmpf = &cb_ft_timecmp;
+	}
 	else
+	{
+		//printf("\t\tno flag\n");
 		cmpf = &cb_ft_strcmp;
+	}
 	sorted_dir = insert_data(info_line, cmpf, av);
 	return (sorted_dir);
 }
