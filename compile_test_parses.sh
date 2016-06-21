@@ -9,14 +9,16 @@ echo "\ntest 3 : ./a.out -a -r -l -R -t tests src\n"
 ./a.out -a -r -l -R -t tests src
 echo "\ntest 4 : ./a.out -arlRt\n"
 ./a.out -arlRt
-echo "\ntest 5 : ./a.out -ttttttt\n"
-./a.out -ttttttt
+echo "\ntest 5 : ./a.out -ttttttt libft\n"
+./a.out -ttttttt libft
 echo "\ntest 6 : ./a.out -arrrrrrrrrrrlRt\n"
 ./a.out -arrrrrrrrrrrrrrrrrrlRt
 echo "\ntest 7 : ./a.out -arlRt -- -z\n"
 ./a.out -arlRt -- -z
 echo "\ntest 8 : ./a.out -arlRtz\n"
 ./a.out -arlRtz
+echo "\ntest 9 : ./a.out -a --\n"
+./a.out -a --
 rm a.out
 echo "\n\t---------------\n"
 #gcc test_sort_directories.c src/sort_directories.c src/call_back_functions.c inc/ft_ls.h libft/libft.a

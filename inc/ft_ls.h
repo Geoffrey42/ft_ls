@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 19:34:53 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 08:53:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ typedef struct	s_info
 }				t_info;
 
 /* parser.c */
-t_info			*set_directories(t_info *info_line, int start);
+t_info			*set_directories(t_info *info_line, int ac, char **av);
 int				add_flags(char *to_check, t_info *info_line, int i);
 int				check_authorized_flags(char *to_check, t_info *info_line);
 t_info			*initialize_info_line(t_info *info_line);
+int				walkthrough_command_line(int ac, char **av, t_info *info_line);
 int				parse_flags(int ac, char **av, t_info *info_line);
 
 /* display.c */

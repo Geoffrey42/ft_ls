@@ -6,16 +6,31 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:26:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 20:02:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 09:19:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_info		*set_directories_info(t_info *info_line, int start)
+t_info		*set_directories_info(t_info *info_line, int ac, char **av)
 {
-	info_line->directory_presence = 1;
-	info_line->directory_position = start;	
+	int		i;
+
+	i = 1;
+	while (i <= ac - 1 && av[i][0] == '-')
+	{
+		if (!ft_strcmp(av[i], "--"))
+		{
+			i++;
+			break ;
+		}
+		i++;
+	}
+	if (i < ac)
+	{
+		info_line->directory_presence = 1;
+		info_line->directory_position = i;	
+	}
 	return (info_line);
 }
 
@@ -61,16 +76,22 @@ t_info		*initialize_info_line(t_info *info_line)
 	return (info_line);
 }
 
-int			parse_flags(int ac, char **av, t_info *info_line)
+int			walkthrough_command_line(int ac, char **av, t_info *info_line)
 {
 	int		i;
 
-	info_line = initialize_info_line(info_line);
 	i = 1;
 	while (i <= ac - 1 && ft_strcmp(av[i], "--"))
 		if (check_authorized_flags(av[i++], info_line))
 			return (1);
-	if (i < ac)
-		info_line = set_directories_info(info_line, i);
+	info_line = set_directories_info(info_line, ac, av);
+	return (0);
+}
+
+int			parse_flags(int ac, char **av, t_info *info_line)
+{
+	info_line = initialize_info_line(info_line);
+	if (walkthrough_command_line(ac, av, info_line))
+		return (1);
 	return (0);
 }
