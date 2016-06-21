@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 18:50:16 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 14:16:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		main(int ac, char **av)
 	t_info		info_line;
 
 	directories_to_sort = NULL;
-	if (!(parse_flags(ac, av, &info_line)))
+	if (parse_flags(ac, av, &info_line))
 		return (1);
-	directories_to_sort = sort_directories(info_line, av);
+	directories_to_sort = sort_directories(&info_line, av, directories_to_sort);
 	sort_content(info_line, directories_to_sort);
 	return (0);
 }

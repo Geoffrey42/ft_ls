@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 08:53:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 14:03:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_info
 	int			flags;
 	int			directory_presence;
 	int			directory_position;
+	int			nb_directories;
 }				t_info;
 
 /* parser.c */
@@ -44,11 +45,17 @@ int				parse_flags(int ac, char **av, t_info *info_line);
 void			display_flags_error_msg(char bad_option);
 
 /* sort_directories.c */
-t_btree			*put_directories_in_a_tree(int start, int ac, char **av);
-int				check_directories_presence(int ac, char **av);
-t_btree			*sort_directories(int ac, char **av);
+t_btree			*insert_data
+				(t_info *info_line, int (*cmpf)(void *, void *), char **av);
+t_btree			*put_directories_in_a_tree
+				(t_info *info_line, t_btree *sorted_dir, char **av);
+t_btree			*put_current_directory_in_a_tree(t_btree *root);
+t_btree			*sort_directories
+				(t_info *info_line, char **av, t_btree *sorted_dir);
 
 /* call_back_functions.c */
+void			cb_ft_putendl(void *str);
+int				cb_ft_timecmp(void *item1, void *item2);
 int				cb_ft_strcmp(void *s1, void *s2);
 
 #endif

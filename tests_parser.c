@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 19:29:27 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/20 19:58:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 14:16:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ void	check_dir(t_info *info_line)
 	printf("Quelle est la position du 1er dossier ?\n");
 	printf((info_line->directory_position == -1) ? "Il n'y en a pas !\n" : "C'est : ");
 	if (info_line->directory_presence)
+	{
 		printf("%d\n", info_line->directory_position);
+		printf("Combien il y en a ?\nIl y en a %d\n", info_line->nb_directories);
+	}
 }
 
 void	affiche_flags(int flags)

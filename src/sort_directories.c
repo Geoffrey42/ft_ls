@@ -6,52 +6,54 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/16 11:59:59 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 14:41:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_btree		*put_directories_in_a_tree(int start, int ac, char **av)
+t_btree		*insert_data
+			(t_info *info_line, int (*cmpf)(void *, void *), char **av)
 {
-	t_btree		*sorted_directories;
-	int			(*cmpf)(void *, void *);
-
-	sorted_directories = NULL;
-	cmpf = &cb_ft_strcmp;
-	while (start <= ac - 1)
-	{
-		btree_insert_data(&sorted_directories, av[start], cmpf);
-		start++;
-	}
-	return (sorted_directories);
-}
-
-int			check_directories_presence(int ac, char **av)
-{
+	t_btree	*sorted_dir;
 	int		i;
 
-	i = 1;
-	while (i <= ac - 1 && av[i][0] == '-')
-		i++;
-	if (i < ac)
-		return (i);
-	return (0);
+	sorted_dir = NULL;
+	i = info_line->directory_position; 
+	while (i <= info_line->nb_directories)
+		btree_insert_data(&sorted_dir, (void *)av[i++], cmpf);
+	return (sorted_dir);
 }
 
-t_btree		*sort_directories(int ac, char **av)
+t_btree		*put_directories_in_a_tree
+			(t_info *info_line, t_btree *sorted_dir, char **av)
 {
-	t_btree		*sorted_directories;
-	char		current_directory;
 	int			(*cmpf)(void *, void *);
-	int			position_dir;
 
-	sorted_directories = NULL;
-	current_directory = '.';
-	cmpf = &cb_ft_strcmp;
-	if ((position_dir = check_directories_presence(ac, av)))
-		sorted_directories = put_directories_in_a_tree(position_dir, ac, av);
+	if (info_line->flags & LOW_T_FLAG)
+		cmpf = &cb_ft_timecmp;
 	else
-		btree_insert_data(&sorted_directories, (void *)&current_directory, cmpf);
-	return (sorted_directories);
+		cmpf = &cb_ft_strcmp;
+	sorted_dir = insert_data(info_line, cmpf, av);
+	return (sorted_dir);
+}
+
+t_btree		*put_current_directory_in_a_tree(t_btree *root)
+{
+	char	current;
+	int		(*cmpf)(void *, void *);
+
+	cmpf = &cb_ft_strcmp;
+	current = '.';
+	btree_insert_data(&root, (void *)&current, cmpf);
+	return (root);
+}
+
+t_btree		*sort_directories(t_info *info_line, char **av, t_btree *sorted_dir)
+{
+	if (!info_line->directory_presence)
+		sorted_dir = put_current_directory_in_a_tree(sorted_dir);
+	else
+		sorted_dir = put_directories_in_a_tree(info_line, sorted_dir, av);
+	return (sorted_dir);
 }
