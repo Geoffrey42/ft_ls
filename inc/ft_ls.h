@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 19:34:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 22:10:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ t_btree			*sort_directories
 
 /* call_back_functions.c */
 void			cb_ft_putendl(void *str);
-int				cb_ft_revtimecmp(void *item1, void *item2);
+int				check_nanosec(void *item1, void *item2);
 int				cb_ft_timecmp(void *item1, void *item2);
-int				cb_ft_revstrcmp(void *s1, void *s2);
 int				cb_ft_strcmp(void *s1, void *s2);
 
 #endif
