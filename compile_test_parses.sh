@@ -37,19 +37,15 @@ echo "test 2 : ./a.out aaa\n"
 ./a.out aaa
 echo "test 3 : ./a.out aaa aa\n"
 ./a.out aaa aa
-echo "test 4 : ./a.out bbb aaa\n"
-./a.out bbb aaa
-echo "test 5 : ./a.out aaa AAA\n"
-./a.out aaa AAA
-echo "test 6 : ./a.out ccc bbb aaa\n"
-./a.out ccc bbb aaa
-echo "test 7 : ./a.out -a -r bbb aaa\n"
-./a.out -a -r bbb aaa
-echo "test 8 : ./a.out -a -r -- bbb aaa\n"
-./a.out -a -r -- bbb aaa
-echo "test 9 : ./a.out -a -r -- bbb aaa libft\n"
-./a.out -a -r -- bbb aaa libft
-echo "test 10 : ./a.out -a -r -- tests aaa libft bbb\n"
-./a.out -a -r -- tests aaa libft bbb
+echo "test 4 : ./a.out bbb aaa ccc\n"
+./a.out bbb aaa ccc
+echo "test 5 : ./a.out -t tests src libft\n"
+./a.out -t tests src libft
+echo "test 6 : ./a.out inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c\n"
+./a.out inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
+echo "test 7 : ./a.out -r inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c\n"
+./a.out -r inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
+echo "test 8 : ./a.out -t inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c\n"
+./a.out -t inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
 rm a.out
 echo "\n\t---------------\n"

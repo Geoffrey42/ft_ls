@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 14:03:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 15:09:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 typedef struct	s_info
 {
 	int			flags;
+	int			argc;
 	int			directory_presence;
 	int			directory_position;
 	int			nb_directories;

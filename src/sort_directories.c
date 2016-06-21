@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 14:41:16 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 16:11:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_btree		*insert_data
 
 	sorted_dir = NULL;
 	i = info_line->directory_position; 
-	while (i <= info_line->nb_directories)
+	while (i <= info_line->argc - 1)
 		btree_insert_data(&sorted_dir, (void *)av[i++], cmpf);
 	return (sorted_dir);
 }
@@ -40,12 +40,12 @@ t_btree		*put_directories_in_a_tree
 
 t_btree		*put_current_directory_in_a_tree(t_btree *root)
 {
-	char	current;
+	char	*current;
 	int		(*cmpf)(void *, void *);
 
 	cmpf = &cb_ft_strcmp;
-	current = '.';
-	btree_insert_data(&root, (void *)&current, cmpf);
+	current = ".";
+	btree_insert_data(&root, (void *)current, cmpf);
 	return (root);
 }
 

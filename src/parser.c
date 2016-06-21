@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:26:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 09:58:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 15:09:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_info		*set_directories_info(t_info *info_line, int ac, char **av)
 		info_line->directory_presence = 1;
 		info_line->directory_position = i;	
 		info_line->nb_directories = ac - i;
+		info_line->argc = ac;
 	}
 	return (info_line);
 }
@@ -72,6 +73,7 @@ int			check_authorized_flags(char *to_check, t_info *info_line)
 t_info		*initialize_info_line(t_info *info_line)
 {
 	info_line->flags = 0;
+	info_line->argc = 0;
 	info_line->directory_presence = 0;
 	info_line->directory_position = -1;
 	info_line->nb_directories = 0;
