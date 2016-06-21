@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 15:20:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 19:50:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/21 20:19:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int		main(int ac, char **av)
 	applyf = &cb_ft_putendl;
 	line = sort_directories(&info_line, av, line);
 	btree_apply_infix(line, applyf);
+	printf("rev_infix\n");
+	btree_apply_rev_infix(line, applyf);
 	return (0);
 }
