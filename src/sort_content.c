@@ -6,13 +6,15 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/16 12:00:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/22 10:04:22 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	sort_content(int *flags, t_btree *sorted_directories)
+void	sort_content(t_info *info_line, t_btree *sorted_directories)
 {
-	
+	int		(*cmpf)(void *, void *);
+
+
 }

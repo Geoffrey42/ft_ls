@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 22:31:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/22 10:37:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,22 @@ t_btree		*insert_data
 	return (sorted_dir);
 }
 
+t_cmpf			choose_compare_function(t_info *info_line)
+{
+	int			(*cmpf)(void *, void *);
+
+	if (info_line->flags & LOW_T_FLAG)
+		return (cmpf = &cb_ft_timecmp);
+	else
+		return (cmpf = &cb_ft_strcmp);
+}
+
 t_btree		*put_directories_in_a_tree
 			(t_info *info_line, t_btree *sorted_dir, char **av)
 {
 	int			(*cmpf)(void *, void *);
 
-	if (info_line->flags & LOW_T_FLAG)
-		cmpf = &cb_ft_timecmp;
-	else
-		cmpf = &cb_ft_strcmp;
+	cmpf = choose_compare_function(info_line);
 	sorted_dir = insert_data(info_line, cmpf, av);
 	return (sorted_dir);
 }
