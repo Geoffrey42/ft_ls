@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/22 10:37:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/22 11:42:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_info
 }				t_info;
 
 typedef int		(*t_cmpf)(void *, void *);
+typedef void	(*applyf)(void *);
 
 /* info_line.c */
 t_info			*set_directories_info(t_info *info_line, int ac, char **av);
@@ -64,5 +65,9 @@ void			cb_ft_putendl(void *str);
 int				check_nanosec(void *item1, void *item2);
 int				cb_ft_timecmp(void *item1, void *item2);
 int				cb_ft_strcmp(void *s1, void *s2);
+
+/* sort_content.c */
+t_applyf		choose_apply_function(t_info *info_line);
+void			sort_content(t_info *info_line, t_btree *directories);
 
 #endif
