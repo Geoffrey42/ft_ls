@@ -6,11 +6,12 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/02 19:11:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/04 14:10:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/22 21:26:57 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	btree_insert_data(t_btree **root, void *item,
 		int (*cmpf)(void *, void *))

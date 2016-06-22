@@ -41,5 +41,5 @@ echo "test 4 : ./a.out -t inc Makefile libft tests_parser.c compile_test_parses.
 ./a.out -t inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
 echo "test 5 : ./a.out -rt inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c\n"
 ./a.out -rt inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
-#rm a.out
+rm a.out
 echo "\n\t---------------\n"

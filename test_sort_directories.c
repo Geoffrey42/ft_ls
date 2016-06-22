@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 15:20:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/21 22:21:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/22 21:27:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		main(int ac, char **av)
 {
 	t_btree		*line;
 	t_info		info_line;
-	void (*applyf)(void *);
+	void 		(*applyf)(void *);
 
 	line = NULL;
 	if (parse_flags(ac, av, &info_line))
