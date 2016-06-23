@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 15:08:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 17:35:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,36 @@ t_btree			*insert_directories
 	sorted_dir = NULL;
 	i = info_line->directory_position; 
 	while (i <= info_line->argc - 1)
-	{
-		//btree_insert_data(&sorted_dir, (void *)av[i++], cmpf);
 		sorted_dir = add_data(info_line, cmpf, av[i++], sorted_dir);
-	}
 	return (sorted_dir);
 }
 
-t_cmpf			choose_compare_function(t_info *info_line)
+int				check_t_flag(void *item, int type)
+{
+	t_info		*info;
+	t_data		*data;
+
+	info = NULL;
+	data = NULL;
+	if (type)
+	{
+		info = (t_info *)item;
+		return (info->flags & LOW_T_FLAG);
+	}
+	else
+	{
+		data = (t_data *)item;
+		return (data->flags & LOW_T_FLAG);
+	}
+	return (-1);
+}
+//t_cmpf			choose_compare_function(t_info *info_line)
+t_cmpf			choose_compare_function(void *item, int type)
 {
 	int			(*cmpf)(void *, void *);
 
-	if (info_line->flags & LOW_T_FLAG)
+	//if (info_line->flags & LOW_T_FLAG)
+	if (check_t_flag(item, type))
 		return (cmpf = &cb_ft_timecmp);
 	else
 		return (cmpf = &cb_ft_strcmp);
@@ -67,7 +85,7 @@ t_btree			*put_directories_in_a_tree
 {
 	int			(*cmpf)(void *, void *);
 
-	cmpf = choose_compare_function(info_line);
+	cmpf = choose_compare_function(info_line, 1);
 	sorted_dir = insert_directories(info_line, cmpf, av);
 	return (sorted_dir);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 15:07:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 17:30:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ t_btree			*add_data
 				t_btree *sorted_dir);
 t_btree			*insert_directories
 				(t_info *info_line, int (*cmpf)(void *, void *), char **av);
-t_cmpf			choose_compare_function(t_info *info_line);
+int				check_t_flag(void *item, int type);
+t_cmpf			choose_compare_function(void *item, int type);
+//t_cmpf			choose_compare_dir_function(t_info *info_line);
 t_btree			*put_directories_in_a_tree
 				(t_info *info_line, t_btree *sorted_dir, char **av);
 t_btree			*put_current_directory_in_a_tree(t_btree *root, t_info *info);
@@ -77,6 +79,7 @@ int				cb_ft_timecmp(void *item1, void *item2);
 int				cb_ft_strcmp(void *s1, void *s2);
 
 /* sort_content.c */
+t_btree			*sort_files(t_data *meta_data, t_btree *tree);
 t_applyf		choose_apply_function(t_info *info_line);
 void			sort_content(t_info *info_line, t_btree *directories);
 

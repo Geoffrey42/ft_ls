@@ -6,13 +6,25 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 15:09:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 17:05:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	cb_non_recursive_applyf(void *item)
+/*void	cb_non_recursive_applyf(void *item)
+{
+	t_btree		*content;
+	t_data		*meta_data;
+
+	content = NULL;
+	meta_data = (t_data *)item;
+	content = sort_files(meta_data, content);
+	display_content(content, meta_data);
+	delete_content(&content);
+}*/
+
+void	cb_recursive_applyf(void *item)
 {
 }
 
@@ -22,7 +34,6 @@ void	cb_ft_putendl(void *str)
 
 	tmp = (t_data *)str;
 	ft_putstr("\t\t");
-	//ft_putendl(str);
 	ft_putendl(tmp->file_name);
 }
 
@@ -37,8 +48,6 @@ int		check_nanosec(void *item1, void *item2)
 	tmp2 = (t_data *)item2;
 	lstat(tmp1->file_name, &item_stat1);
 	lstat(tmp2->file_name, &item_stat2);
-	//lstat(item1, &item_stat1);
-	//lstat(item2, &item_stat2);
 	if (item_stat1.st_mtimespec.tv_nsec < item_stat2.st_mtimespec.tv_nsec)
 		return (1);
 	else if (item_stat1.st_mtimespec.tv_nsec > item_stat2.st_mtimespec.tv_nsec)
@@ -59,8 +68,6 @@ int		cb_ft_timecmp(void *item1, void *item2)
 	tmp2 = (t_data *)item2;
 	lstat(tmp1->file_name, &item_stat1);
 	lstat(tmp2->file_name, &item_stat2);
-	//lstat(item1, &item_stat1);
-	//lstat(item2, &item_stat2);
 	if (item_stat1.st_mtime < item_stat2.st_mtime)
 		return (1);
 	else if (item_stat1.st_mtime > item_stat2.st_mtime)
@@ -77,6 +84,5 @@ int		cb_ft_strcmp(void *item1, void *item2)
 
 	tmp1 = (t_data *)item1;
 	tmp2 = (t_data *)item2;
-	//return (ft_strcmp(item1, item2));
 	return (ft_strcmp(tmp1->file_name, tmp2->file_name));
 }
