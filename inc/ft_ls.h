@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/22 21:30:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 15:07:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ typedef struct	s_info
 	int			nb_directories;
 }				t_info;
 
+typedef struct	s_data
+{
+	char		*file_name;
+	int			flags;
+}				t_data;
+
 typedef int		(*t_cmpf)(void *, void *);
 typedef void	(*t_applyf)(void *);
 
@@ -51,6 +57,10 @@ int				parse_flags(int ac, char **av, t_info *info_line);
 void			display_flags_error_msg(char bad_option);
 
 /* sort_directories.c */
+t_data			*init_meta_data(int flag, char *dir_name);
+t_btree			*add_data
+				(t_info *info, int (*cmpf)(void *, void *), char *dir_name,
+				t_btree *sorted_dir);
 t_btree			*insert_directories
 				(t_info *info_line, int (*cmpf)(void *, void *), char **av);
 t_cmpf			choose_compare_function(t_info *info_line);

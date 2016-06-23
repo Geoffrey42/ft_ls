@@ -29,7 +29,7 @@ echo "\ntest 13 : ./a.out -a -r -- tests aaa libft bbb\n"
 ./a.out -a -r -- tests aaa libft bbb
 rm a.out
 echo "\n\t---------------\n"
-gcc -g test_sort_directories.c src/info_line.c src/parser.c src/display.c src/sort_directories.c src/call_back_functions.c  inc/ft_ls.h libft/libft.a
+gcc test_sort_directories.c src/info_line.c src/parser.c src/display.c src/sort_directories.c src/call_back_functions.c  inc/ft_ls.h libft/libft.a
 echo "tests sur dossiers en parametre de ft_ls\n"
 echo "test 1 : ./a.out -t tests src libft\n"
 ./a.out -t tests src libft
@@ -41,5 +41,5 @@ echo "test 4 : ./a.out -t inc Makefile libft tests_parser.c compile_test_parses.
 ./a.out -t inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
 echo "test 5 : ./a.out -rt inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c\n"
 ./a.out -rt inc Makefile libft tests_parser.c compile_test_parses.sh inspect_file tests src test_sort_directories.c
-#rm a.out
+rm a.out
 echo "\n\t---------------\n"
