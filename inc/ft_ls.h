@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:30:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 17:39:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_btree			*insert_directories
 				(t_info *info_line, int (*cmpf)(void *, void *), char **av);
 int				check_t_flag(void *item, int type);
 t_cmpf			choose_compare_function(void *item, int type);
-//t_cmpf			choose_compare_dir_function(t_info *info_line);
 t_btree			*put_directories_in_a_tree
 				(t_info *info_line, t_btree *sorted_dir, char **av);
 t_btree			*put_current_directory_in_a_tree(t_btree *root, t_info *info);

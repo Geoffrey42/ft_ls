@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:35:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 17:39:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,10 @@ int				check_t_flag(void *item, int type)
 	}
 	return (-1);
 }
-//t_cmpf			choose_compare_function(t_info *info_line)
 t_cmpf			choose_compare_function(void *item, int type)
 {
 	int			(*cmpf)(void *, void *);
 
-	//if (info_line->flags & LOW_T_FLAG)
 	if (check_t_flag(item, type))
 		return (cmpf = &cb_ft_timecmp);
 	else
