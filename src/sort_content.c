@@ -6,11 +6,33 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:46:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/23 21:56:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+t_btree		*put_content_in_a_tree(DIR *dirp, t_btree *tree)
+{
+	struct dirent	*files;
+
+	while ((file = readdir(dirp)))
+		tree = btree_insert_data(&tree, (void *)file->d_name, cmpf);
+	return (tree);
+}
+
+t_btree		*insert_files(t_data *meta_data, int (*cmpf)(void *, void *))
+{
+	t_btree	*tree;
+	DIR		*dirp;
+
+	tree = NULL;
+	if (!(dirp = opendir(meta_data->file_name)))
+		return (NULL);
+	tree = put_content_in_a_tree(dirp, tree); 
+	closedir(dirp);
+	return (tree);
+}
 
 t_btree		*sort_files(t_data *meta_data, t_btree *tree)
 {
