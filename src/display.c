@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/27 20:05:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 20:52:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,13 @@ void		display_rights(struct stat file_stat)
 	ft_putstr((file_stat.st_mode & S_IXOTH) ? "x" : "-");
 }
 
-void		diplay_links(struct stat file_stat)
+void		display_links(struct stat file_stat)
+{
+	ft_putnbr(file_stat.st_nlink);
+	ft_putchar(' ');
+}
+
+void		display_id(struct stat file_stat)
 {
 	struct passwd	*usr_id;
 	struct group	*grp_id;
@@ -62,6 +68,34 @@ void		display_file_mode(struct stat file_stat)
 	display_rights(file_stat);
 	ft_putstr("  ");
 }
+void		display_size(struct stat file_stat)
+{
+	ft_putnbr(file_stat.st_size);
+	ft_putchar(' ');
+}
+
+char	*keep_necessary_timedata(char *long_time)
+{
+	char	*shorter_time;
+	char	*ptr;
+
+	shorter_time = (char *)malloc(sizeof(char) * 13);
+	if (!shorter_time)
+		return (NULL);
+	ptr = long_time + 4;
+	shorter_time = strncpy(shorter_time, ptr, 12);
+	shorter_time[12] = '\0';
+	return (shorter_time);
+}
+
+void		display_date(struct stat file_stat)
+{
+	char	*date;
+
+	date = keep_necessary_timedata(ctime(&file_stat.st_mtime));
+	ft_putstr(date);
+	ft_putchar(' ');
+}
 
 void		display_long_format(char *file)
 {
@@ -74,7 +108,12 @@ void		display_long_format(char *file)
 	display_id(file_stat);
 	display_size(file_stat);
 	display_date(file_stat);
-	display_file_name(file);
+	display_short_format(file);
+}
+
+void		display_short_format(char *file)
+{
+	ft_putendl(file);
 }
 
 void		choose_format_to_display(t_data *data)
@@ -92,10 +131,17 @@ void		display_flags_error_msg(char bad_option)
 	ft_putendl_fd("\nusage: ls [-Raltr] [file ...]", 2);
 }
 
+void		check_if_l_flag(t_data *data)
+{
+
+}
+
 void		display_content(t_btree *tree, t_data *data)
 {
 	void	(*applyf)(void *);
 
-	applyf = cb_display_format;
+	if (data->flag & LOW_L_FLAG)
+		display_total_size(data, tree);
+	applyf = &cb_display_format;
 	choose_infix_traversal(tree, applyf);
 }

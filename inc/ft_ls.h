@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/27 19:46:49 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 20:35:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,14 @@ int				parse_flags(int ac, char **av, t_info *info_line);
 /* display.c */
 void			display_type_file(struct stat file_stat);
 void			display_rights(struct stat file_stat);
+void			display_links(struct stat file_stat);
+void			display_id(struct stat file_stat);
+void			display_file_mode(struct stat file_stat);
+void			display_size(struct stat file_stat);
+char			*keep_necessary_timedata(char *long_time);
+void			display_date(struct stat file_stat);
 void			display_long_format(char *file);
+void			display_short_format(char *file);
 void			choose_format_to_display(t_data *data);
 void			display_flags_error_msg(char bad_option);
 
