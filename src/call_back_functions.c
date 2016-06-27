@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:05:55 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 19:01:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,23 @@
 	meta_data = (t_data *)item;
 	content = sort_files(meta_data, content);
 	display_content(content, meta_data);
-	delete_content(&content);
+	delete_tree(&content);
 }*/
 
 void	cb_recursive_applyf(void *item)
 {
+}
+
+void	cb_display_format(void *item)
+{
+	t_data	*tmp;
+
+	tmp = (t_data *)item;
+	//ft_putstr("\t\t");
+	if (!tmp->flags & LOW_A_FLAG)
+		choose_format_to_display(tmp);
+	else if ((tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
+		choose_format_to_display(tmp);
 }
 
 void	cb_ft_putendl(void *str)
@@ -33,8 +45,11 @@ void	cb_ft_putendl(void *str)
 	t_data	*tmp;
 
 	tmp = (t_data *)str;
-	ft_putstr("\t\t");
-	ft_putendl(tmp->file_name);
+	//ft_putstr("\t\t");
+	if (!tmp->flags & LOW_A_FLAG)
+		ft_putendl(tmp->file_name);
+	else if ((tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
+		ft_putendl(tmp->file_name);
 }
 
 int		check_nanosec(void *item1, void *item2)

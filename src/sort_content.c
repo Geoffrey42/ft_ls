@@ -6,18 +6,32 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 21:56:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 15:57:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_btree		*put_content_in_a_tree(DIR *dirp, t_btree *tree)
+t_btree		*add_content_tree
+			(int flags, t_btree *tree, char *file_name,
+			int (*cmpf)(void *, void *))
 {
-	struct dirent	*files;
+	t_data	*meta_data;
+
+	meta_data = NULL;
+	meta_data = init_meta_data(flags, file->file_name);
+	btree_insert_data(&tree, (void *)meta_data, cmpf);
+	return (tree);
+}
+
+t_btree		*put_content_in_a_tree
+			(t_data *meta_data, DIR *dirp, t_btree *tree,
+			int (*cmpf)(void *, void *))
+{
+	struct dirent	*file;
 
 	while ((file = readdir(dirp)))
-		tree = btree_insert_data(&tree, (void *)file->d_name, cmpf);
+		tree = add_content_tree(meta_data->flags, tree, file->d_name);
 	return (tree);
 }
 
@@ -29,7 +43,7 @@ t_btree		*insert_files(t_data *meta_data, int (*cmpf)(void *, void *))
 	tree = NULL;
 	if (!(dirp = opendir(meta_data->file_name)))
 		return (NULL);
-	tree = put_content_in_a_tree(dirp, tree); 
+	tree = put_content_in_a_tree(meta_data, dirp, tree, cmpf); 
 	closedir(dirp);
 	return (tree);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:39:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 19:46:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int				walkthrough_command_line(int ac, char **av, t_info *info_line);
 int				parse_flags(int ac, char **av, t_info *info_line);
 
 /* display.c */
+void			display_type_file(struct stat file_stat);
+void			display_rights(struct stat file_stat);
+void			display_long_format(char *file);
+void			choose_format_to_display(t_data *data);
 void			display_flags_error_msg(char bad_option);
 
 /* sort_directories.c */
@@ -72,12 +76,20 @@ t_btree			*sort_directories
 				(t_info *info_line, char **av, t_btree *sorted_dir);
 
 /* call_back_functions.c */
+void			cb_display_format(void *item);
 void			cb_ft_putendl(void *str);
 int				check_nanosec(void *item1, void *item2);
 int				cb_ft_timecmp(void *item1, void *item2);
 int				cb_ft_strcmp(void *s1, void *s2);
 
 /* sort_content.c */
+t_btree			*add_content_tree
+				(int flags, t_btree *tree, char *file_name,
+				int (*cmpf)(void *, void *))
+t_btree			*put_content_in_a_tree
+				(t_data *meta_data, DIR *dirp, t_btree *tree,
+				int (*cmpf)(void *, void *))
+t_btree			*insert_files(t_data *meta_data, int (*cmpf)(void *, void *));
 t_btree			*sort_files(t_data *meta_data, t_btree *tree);
 t_applyf		choose_apply_function(t_info *info_line);
 void			sort_content(t_info *info_line, t_btree *directories);

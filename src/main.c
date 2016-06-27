@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 16:58:51 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/27 17:08:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int		main(int ac, char **av)
 		return (1);
 	directories_to_sort = sort_directories(&info_line, av, directories_to_sort);
 	sort_content(info_line, directories_to_sort);
+	delete_tree(directories_to_sort);
 	return (0);
 }
