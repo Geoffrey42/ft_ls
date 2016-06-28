@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   btree_delete.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 12:00:37 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/28 10:48:27 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/28 11:25:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "libft.h"
 
-int		main(int ac, char **av)
+void	btree_delete(t_btree *tree)
 {
-	t_btree		*directories_to_sort;
-	t_info		info_line;
+	t_btree	del_left;
+	t_btree	del_right;
 
-	directories_to_sort = NULL;
-	if (parse_flags(ac, av, &info_line))
-		return (1);
-	directories_to_sort = sort_directories(&info_line, av, directories_to_sort);
-	sort_content(&info_line, directories_to_sort);
-	//btree_delete(directories_to_sort);
-	return (0);
+	del_left = *tree->left;
+	del_right = *tree->right;
+	if (!is_empty(tree))
+	{
+		btree_delete(&del_left);
+		btree_delete(&del_right);
+		free((void *)tree);
+		tree = NULL;
+	}
 }

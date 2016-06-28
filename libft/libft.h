@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/07 10:45:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/22 21:27:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 11:59:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					is_empty(t_btree *tree);
+void				btree_delete(t_btree *tree);
 t_btree				*btree_create_node(void *item);
 void				btree_insert_data(t_btree **root, void *item,
 					int (*cmpf)(void *, void *));

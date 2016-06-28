@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/27 20:37:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 12:02:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-/*void	cb_non_recursive_applyf(void *item)
+void	cb_non_recursive_applyf(void *item)
 {
 	t_btree		*content;
 	t_data		*meta_data;
@@ -21,11 +21,14 @@
 	meta_data = (t_data *)item;
 	content = sort_files(meta_data, content);
 	display_content(content, meta_data);
-	delete_tree(&content);
-}*/
+	//btree_delete(content);
+}
 
 void	cb_recursive_applyf(void *item)
 {
+	t_data	*nothing;
+
+	nothing = (t_data *)item;
 }
 
 void	cb_display_format(void *item)
@@ -33,10 +36,9 @@ void	cb_display_format(void *item)
 	t_data	*tmp;
 
 	tmp = (t_data *)item;
-	//ft_putstr("\t\t");
-	if (!tmp->flags & LOW_A_FLAG)
+	if (tmp->flags & LOW_A_FLAG)
 		choose_format_to_display(tmp);
-	else if ((tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
+	else if ((!tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
 		choose_format_to_display(tmp);
 }
 
@@ -45,7 +47,6 @@ void	cb_ft_putendl(void *str)
 	t_data	*tmp;
 
 	tmp = (t_data *)str;
-	//ft_putstr("\t\t");
 	if (!tmp->flags & LOW_A_FLAG)
 		ft_putendl(tmp->file_name);
 	else if ((tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')

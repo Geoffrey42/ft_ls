@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/23 17:39:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 11:47:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_data			*init_meta_data(int flag, char *dir_name)
 		return (NULL);
 	new->file_name = ft_strdup(dir_name);
 	new->flags = flag;
+	new->total_size = 0;
 	return (new);
 }
 
@@ -91,10 +92,11 @@ t_btree			*put_directories_in_a_tree
 t_btree			*put_current_directory_in_a_tree(t_btree *root, t_info *info)
 {
 	int			(*cmpf)(void *, void *);
-	char		*content;
+	t_data		*content;
 
 	cmpf = &cb_ft_strcmp;
-	content = ft_strdup(".");
+	content = NULL;
+	content = init_meta_data(info->flags, ".");
 	btree_insert_data(&root, (void *)content, cmpf);
 	return (root);
 }

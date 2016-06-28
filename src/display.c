@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/27 20:52:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 11:43:18 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ void		display_id(struct stat file_stat)
 	struct group	*grp_id;
 
 	usr_id = getpwuid(file_stat.st_uid);
-	ft_pustr(usr_id->pw_name);
+	ft_putstr(usr_id->pw_name);
 	ft_putstr("  ");
 	grp_id = getgrgid(file_stat.st_gid);
-	ft_pustr(grp_id->gr_name);
+	ft_putstr(grp_id->gr_name);
 	ft_putstr("  ");
 }
 
@@ -101,7 +101,7 @@ void		display_long_format(char *file)
 {
 	struct stat		file_stat;
 
-	if (lstat(file, file_stat) < 0)
+	if (lstat(file, &file_stat) < 0)
 		return ;
 	display_file_mode(file_stat);
 	display_links(file_stat);
@@ -131,17 +131,50 @@ void		display_flags_error_msg(char bad_option)
 	ft_putendl_fd("\nusage: ls [-Raltr] [file ...]", 2);
 }
 
-void		check_if_l_flag(t_data *data)
+void		display_total_size(long long int size)
 {
+	long long int	total;
 
+	total = size / 512;
+	ft_putstr("total ");
+	ft_putnbr(total);
+	ft_putchar('\n');
+}
+
+int			check_r_flag(void *item, int type)
+{
+	t_info	*info;
+	t_data	*data;
+
+	info = NULL;
+	data = NULL;
+	if (type)
+	{
+		info = (t_info *)item;
+		return (info->flags & LOW_R_FLAG);
+	}
+	else
+	{
+		data = (t_data *)item;
+		return (data->flags & LOW_R_FLAG);
+	}
+}
+
+void		choose_infix_traversal
+			(void *item, int type, t_btree *tree, void (*applyf)(void *))	
+{
+	if (check_r_flag(item, type))
+		btree_apply_rev_infix(tree, applyf);
+	else
+		btree_apply_infix(tree, applyf);
 }
 
 void		display_content(t_btree *tree, t_data *data)
 {
 	void	(*applyf)(void *);
 
-	if (data->flag & LOW_L_FLAG)
-		display_total_size(data, tree);
+	if (data->flags & LOW_L_FLAG)
+		display_total_size(data->total_size);
 	applyf = &cb_display_format;
-	choose_infix_traversal(tree, applyf);
+	choose_infix_traversal(data, 0, tree, applyf);
 }
