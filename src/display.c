@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 11:43:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 15:58:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,12 +169,22 @@ void		choose_infix_traversal
 		btree_apply_infix(tree, applyf);
 }
 
+void		display_repo_names(t_data *data)
+{
+	ft_putchar('\n');
+	ft_putendl(data->file_name);
+}
+
 void		display_content(t_btree *tree, t_data *data)
 {
 	void	(*applyf)(void *);
+	int		i;
 
+	i = 0;
 	if (data->flags & LOW_L_FLAG)
 		display_total_size(data->total_size);
+	if (data->nb_directories > 0)
+		display_repo_names(data);
 	applyf = &cb_display_format;
 	choose_infix_traversal(data, 0, tree, applyf);
 }

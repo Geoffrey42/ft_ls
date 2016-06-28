@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 11:41:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 15:55:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_data
 {
 	char			*file_name;
 	int				flags;
+	int				nb_directories;
 	long long int	total_size;
 }					t_data;
 

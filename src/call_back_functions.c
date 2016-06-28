@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 12:02:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 14:04:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,21 @@ void	cb_display_format(void *item)
 	t_data	*tmp;
 
 	tmp = (t_data *)item;
+	//ft_putendl("start cb_display_format");
 	if (tmp->flags & LOW_A_FLAG)
+	{
+		//ft_putendl("-->flag -a set<--");
 		choose_format_to_display(tmp);
-	else if ((!tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
-		choose_format_to_display(tmp);
+	}
+	else
+	{
+		if (tmp->file_name[0] != '.')
+		{
+		//	ft_putendl("-->flag -a unset<--");
+			choose_format_to_display(tmp);
+		}
+	}
+	//else if ((!tmp->flags & LOW_A_FLAG) && tmp->file_name[0] != '.')
 }
 
 void	cb_ft_putendl(void *str)

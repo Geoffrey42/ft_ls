@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   tests_compare.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/30 16:56:25 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/04 17:46:45 by ggane            ###   ########.fr       */
+/*   Created: 2016/06/28 13:31:17 by ggane             #+#    #+#             */
+/*   Updated: 2016/06/28 13:31:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include "../libft/libft.h"
+#include "inc/ft_ls.h"
 #define BUF_SIZE 1
 
 char	*fill_ft_ls(char *ft_ls, char *ft_ls_buf)

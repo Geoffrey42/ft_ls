@@ -1,5 +1,5 @@
 #!/bin/sh
-gcc tests_parser.c src/parser.c src/display.c src/info_line.c inc/ft_ls.h libft/libft.a
+gcc tests_parser.c src/parser.c src/display.c src/info_line.c src/sort_content.c src/sort_directories.c src/call_back_functions.c inc/ft_ls.h libft/libft.a
 echo "tests sur parseur\n"
 echo "test 1 : ./a.out -a src\n"
 ./a.out -a src
@@ -29,7 +29,7 @@ echo "\ntest 13 : ./a.out -a -r -- tests aaa libft bbb\n"
 ./a.out -a -r -- tests aaa libft bbb
 rm a.out
 echo "\n\t---------------\n"
-gcc test_sort_directories.c src/info_line.c src/parser.c src/display.c src/sort_directories.c src/call_back_functions.c  inc/ft_ls.h libft/libft.a
+gcc test_sort_directories.c src/info_line.c src/parser.c src/display.c src/sort_directories.c src/call_back_functions.c src/sort_content.c inc/ft_ls.h libft/libft.a
 echo "tests sur dossiers en parametre de ft_ls\n"
 echo "test 1 : ./a.out -t tests src libft\n"
 ./a.out -t tests src libft
