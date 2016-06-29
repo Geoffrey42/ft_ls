@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 13:49:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 22:42:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ long long int	add_size(char *file, long long int size)
 	struct stat	file_stat;
 
 	lstat(file, &file_stat);
-
 	size = size + file_stat.st_size;
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 15:55:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/29 15:52:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct		s_info
 	int				argc;
 	int				directory_presence;
 	int				directory_position;
+	int				position;
 	int				nb_directories;
 }					t_info;
 
@@ -44,6 +45,7 @@ typedef struct		s_data
 	char			*file_name;
 	int				flags;
 	int				nb_directories;
+	int				position;
 	long long int	total_size;
 }					t_data;
 
@@ -79,6 +81,7 @@ int					check_r_flag(void *item, int type);
 void				choose_infix_traversal
 					(void *item, int type, t_btree *tree, 
 					void (*applyf)(void *));
+void				display_repo_names(t_data *data, t_btree *tree);
 void				display_content(t_btree *tree, t_data *data);
 
 /* sort_directories.c */

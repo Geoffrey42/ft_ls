@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 15:55:28 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/28 23:06:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_data			*init_meta_data(int flag, char *dir_name)
 	if (!(new = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
 	new->file_name = ft_strdup(dir_name);
-	//ft_putendl(new->file_name);
 	new->flags = flag;
 	new->total_size = 0;
 	return (new);
@@ -35,6 +34,7 @@ t_btree			*add_data
 	meta_data = NULL;
 	meta_data = init_meta_data(info->flags, dir_name);
 	meta_data->nb_directories = info->nb_directories;
+	meta_data->position = info->position;
 	btree_insert_data(&sorted_dir, (void *)meta_data, cmpf);
 	return (sorted_dir);
 }
@@ -47,8 +47,12 @@ t_btree			*insert_directories
 
 	sorted_dir = NULL;
 	i = info_line->directory_position; 
+	info_line->position = 0;
 	while (i <= info_line->argc - 1)
+	{
+		info_line->position++;
 		sorted_dir = add_data(info_line, cmpf, av[i++], sorted_dir);
+	}
 	return (sorted_dir);
 }
 
