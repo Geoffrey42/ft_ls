@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/29 16:39:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/29 16:47:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,7 @@ void		choose_infix_traversal
 
 void		display_repo_names(t_data *data, t_btree *tree)
 {
-	if ((data->flags & LOW_R_FLAG) == 0 && tree->left != NULL
-	&& tree->right != NULL)
+	if (tree->left != NULL && tree->right != NULL)
 		ft_putchar('\n');
 	if (data->file_name[0] != '.')
 	{
