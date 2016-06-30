@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/29 16:47:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 14:16:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,9 +171,9 @@ void		choose_infix_traversal
 
 void		display_repo_names(t_data *data, t_btree *tree)
 {
-	if (tree->left != NULL && tree->right != NULL)
+	if ((data->flags & LOW_R_FLAG) == 0 && tree->left != NULL && tree->right != NULL)
 		ft_putchar('\n');
-	if (data->file_name[0] != '.')
+	if (data->file_name[0] != '.' && tree != NULL)
 	{
 		ft_putstr(data->file_name);
 		ft_putendl(":");
@@ -190,4 +190,6 @@ void		display_content(t_btree *tree, t_data *data)
 		display_repo_names(data, tree);
 	applyf = &cb_display_format;
 	choose_infix_traversal(data, 0, tree, applyf);
+	if (data->flags & LOW_R_FLAG && tree->left != NULL && tree->right != NULL)
+		ft_putchar('\n');
 }
