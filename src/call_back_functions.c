@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 22:33:49 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 14:43:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int		check_nanosec(void *item1, void *item2)
 {
 	struct stat		item_stat1;
 	struct stat		item_stat2;
-	t_data	*tmp1;
-	t_data	*tmp2;
+	t_data			*tmp1;
+	t_data			*tmp2;
 
 	tmp1 = (t_data *)item1;
 	tmp2 = (t_data *)item2;

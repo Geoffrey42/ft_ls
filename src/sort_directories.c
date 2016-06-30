@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 23:06:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 15:00:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int				check_t_flag(void *item, int type)
 	}
 	return (-1);
 }
+
 t_cmpf			choose_compare_function(void *item, int type)
 {
 	int			(*cmpf)(void *, void *);
@@ -103,6 +104,7 @@ t_btree			*put_current_directory_in_a_tree(t_btree *root, t_info *info)
 	cmpf = &cb_ft_strcmp;
 	content = NULL;
 	content = init_meta_data(info->flags, ".");
+	content->nb_directories = 0;
 	btree_insert_data(&root, (void *)content, cmpf);
 	return (root);
 }

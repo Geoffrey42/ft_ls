@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/13 14:41:36 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 14:16:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 15:54:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,8 @@ void		choose_infix_traversal
 
 void		display_repo_names(t_data *data, t_btree *tree)
 {
-	if ((data->flags & LOW_R_FLAG) == 0 && tree->left != NULL && tree->right != NULL)
+	if ((data->flags & LOW_R_FLAG) == 0
+	&& tree->left != NULL && tree->right != NULL)
 		ft_putchar('\n');
 	if (data->file_name[0] != '.' && tree != NULL)
 	{
@@ -186,10 +187,12 @@ void		display_content(t_btree *tree, t_data *data)
 
 	if (data->flags & LOW_L_FLAG)
 		display_total_size(data->total_size);
-	if (data->nb_directories > 0)
+	if (data->nb_directories > 1)
 		display_repo_names(data, tree);
 	applyf = &cb_display_format;
 	choose_infix_traversal(data, 0, tree, applyf);
-	if (data->flags & LOW_R_FLAG && tree->left != NULL && tree->right != NULL)
-		ft_putchar('\n');
+	if (data->nb_directories > 1) 
+		if (data->flags & LOW_R_FLAG
+		&& tree->left != NULL && tree->right != NULL)
+			ft_putchar('\n');
 }
