@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 22:42:54 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 16:52:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ long long int	add_size(char *file, long long int size)
 	return (size);
 }
 
+int				check_if_dir(char *file)
+{
+	struct stat	file_stat;
+
+	lstat(file, &file_stat);
+	if (S_ISDIR(file_stat.st_mode))
+		return (1);
+	else
+		return (0);
+}
+
 t_btree			*add_content_tree
 			(int flags, t_btree *tree, char *file_name,
 			int (*cmpf)(void *, void *))
@@ -30,6 +41,7 @@ t_btree			*add_content_tree
 	meta_data = NULL;
 	meta_data = init_meta_data(flags, file_name);
 	meta_data->total_size = add_size(file_name, meta_data->total_size);
+	meta_data->is_dir = check_if_dir(file_name);
 	btree_insert_data(&tree, (void *)meta_data, cmpf);
 	return (tree);
 }

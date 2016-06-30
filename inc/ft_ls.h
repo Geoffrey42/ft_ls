@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 16:11:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 16:40:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ int					cb_ft_strcmp(void *s1, void *s2);
 
 /* sort_content.c */
 long long int		add_size(char *file, long long int size);
+int					check_if_dir(char *file);
 t_btree				*add_content_tree
 					(int flags, t_btree *tree, char *file_name,
 					int (*cmpf)(void *, void *));
