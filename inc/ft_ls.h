@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/29 18:06:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/06/30 16:11:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int					check_r_flag(void *item, int type);
 void				choose_infix_traversal
 					(void *item, int type, t_btree *tree, 
 					void (*applyf)(void *));
+void				display_newline(t_data *data, t_btree *tree, int nb);
 void				display_repo_names(t_data *data, t_btree *tree);
 void				display_content(t_btree *tree, t_data *data);
 
