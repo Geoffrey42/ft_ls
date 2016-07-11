@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 19:37:20 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 14:43:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/07 11:34:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,24 @@
 void	cb_non_recursive_applyf(void *item)
 {
 	t_btree		*content;
-	t_data		*meta_data;
+	t_data		*data;
 
 	content = NULL;
-	meta_data = (t_data *)item;
-	content = sort_files(meta_data, content);
-	display_content(content, meta_data);
+	data = (t_data *)item;
+	content = sort_files(data, content);
+	display_content(content, data);
 	//btree_delete(content);
 }
 
 void	cb_recursive_applyf(void *item)
 {
-	t_data	*nothing;
+	t_btree		*content;
+	t_data		*data;
 
-	nothing = (t_data *)item;
+	content = NULL;
+	data = (t_data *)item;
+	content = sort_files(data, content);
+	display_content(content, data);
 }
 
 void	cb_display_format(void *item)

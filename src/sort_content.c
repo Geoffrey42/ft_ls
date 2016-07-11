@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 16:52:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/11 14:53:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int				check_if_dir(char *file)
 		return (0);
 }
 
-t_btree			*add_content_tree
+/*t_btree			*add_content_tree
 			(int flags, t_btree *tree, char *file_name,
 			int (*cmpf)(void *, void *))
 {
@@ -44,6 +44,28 @@ t_btree			*add_content_tree
 	meta_data->is_dir = check_if_dir(file_name);
 	btree_insert_data(&tree, (void *)meta_data, cmpf);
 	return (tree);
+}*/
+
+char			*create_pathname(char *parent, char *son)
+{
+	parent = ft_strjoin(parent, "/");
+	son = ft_strjoin(parent, son);
+	return (son);
+}
+
+t_btree			*add_content_tree
+				(t_data *parent, t_btree *tree, char *file_name,
+				int (*cmpf)(void *, void *))
+{
+	t_data	*meta_data;
+
+	meta_data = NULL;
+	meta_data = init_meta_data(parent->flags, file_name);
+	meta_data->pathname = create_pathname(parent->file_name, meta_data->file_name);
+	meta_data->total_size = add_size(meta_data->pathname, meta_data->total_size);
+	meta_data->is_dir = check_if_dir(meta_data->pathname);
+	btree_insert_data(&tree, (void *)meta_data, cmpf);
+	return (tree);
 }
 
 t_btree			*put_content_in_a_tree
@@ -53,7 +75,8 @@ t_btree			*put_content_in_a_tree
 	struct dirent	*file;
 
 	while ((file = readdir(dirp)))
-		tree = add_content_tree(meta_data->flags, tree, file->d_name, cmpf);
+		//tree = add_content_tree(meta_data->flags, tree, file->d_name, cmpf);
+		tree = add_content_tree(meta_data, tree, file->d_name, cmpf);
 	return (tree);
 }
 

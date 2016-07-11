@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 15:00:25 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/11 14:44:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ t_data			*init_meta_data(int flag, char *dir_name)
 	new->file_name = ft_strdup(dir_name);
 	new->flags = flag;
 	new->total_size = 0;
+	new->pathname = NULL;
+	//new->is_dir = check_if_dir(dir_name);
+	new->is_dir = 0; 
 	return (new);
 }
 

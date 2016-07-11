@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/30 16:40:16 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/11 14:46:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_info
 typedef struct		s_data
 {
 	char			*file_name;
+	char			*pathname;
 	int				flags;
 	int				is_dir;
 	int				nb_directories;
@@ -114,9 +115,13 @@ int					cb_ft_strcmp(void *s1, void *s2);
 /* sort_content.c */
 long long int		add_size(char *file, long long int size);
 int					check_if_dir(char *file);
+char				*create_pathname(char *parent, char *son);
 t_btree				*add_content_tree
-					(int flags, t_btree *tree, char *file_name,
+					(t_data *parent, t_btree *tree, char *file_name,
 					int (*cmpf)(void *, void *));
+/*t_btree				*add_content_tree
+					(int flags, t_btree *tree, char *file_name,
+					int (*cmpf)(void *, void *));*/
 t_btree				*put_content_in_a_tree
 					(t_data *meta_data, DIR *dirp, t_btree *tree,
 					int (*cmpf)(void *, void *));
