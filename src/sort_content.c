@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/16 09:30:06 by ggane             #+#    #+#             */
-/*   Updated: 2016/07/11 14:53:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/11 15:13:20 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,6 @@ int				check_if_dir(char *file)
 	else
 		return (0);
 }
-
-/*t_btree			*add_content_tree
-			(int flags, t_btree *tree, char *file_name,
-			int (*cmpf)(void *, void *))
-{
-	t_data	*meta_data;
-
-	meta_data = NULL;
-	meta_data = init_meta_data(flags, file_name);
-	meta_data->total_size = add_size(file_name, meta_data->total_size);
-	meta_data->is_dir = check_if_dir(file_name);
-	btree_insert_data(&tree, (void *)meta_data, cmpf);
-	return (tree);
-}*/
 
 char			*create_pathname(char *parent, char *son)
 {

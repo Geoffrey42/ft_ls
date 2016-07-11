@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/07/11 14:46:44 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/11 15:13:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,6 @@ char				*create_pathname(char *parent, char *son);
 t_btree				*add_content_tree
 					(t_data *parent, t_btree *tree, char *file_name,
 					int (*cmpf)(void *, void *));
-/*t_btree				*add_content_tree
-					(int flags, t_btree *tree, char *file_name,
-					int (*cmpf)(void *, void *));*/
 t_btree				*put_content_in_a_tree
 					(t_data *meta_data, DIR *dirp, t_btree *tree,
 					int (*cmpf)(void *, void *));
