@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/15 09:33:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/07/11 15:08:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/12 14:06:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ t_data			*init_meta_data(int flag, char *dir_name)
 }
 
 t_btree			*add_data
-				(t_info *info, int (*cmpf)(void *, void *), char *dir_name,
-				t_btree *sorted_dir)
+					(t_info *info, int (*cmpf)(void *, void *), char *dir_name,
+					t_btree *sorted_dir)
 {
-	t_data		*meta_data;
+		t_data		*meta_data;
 
-	meta_data = NULL;
-	meta_data = init_meta_data(info->flags, dir_name);
-	meta_data->nb_directories = info->nb_directories;
-	meta_data->position = info->position;
-	btree_insert_data(&sorted_dir, (void *)meta_data, cmpf);
+		meta_data = NULL;
+		meta_data = init_meta_data(info->flags, dir_name);
+		meta_data->nb_directories = info->nb_directories;
+		meta_data->position = info->position;
+		btree_insert_data(&sorted_dir, (void *)meta_data, cmpf);
 	return (sorted_dir);
 }
 
@@ -56,18 +56,18 @@ t_btree			*insert_directories
 		info_line->position++;
 		sorted_dir = add_data(info_line, cmpf, av[i++], sorted_dir);
 	}
-	return (sorted_dir);
-}
+		return (sorted_dir);
+	}
 
-int				check_t_flag(void *item, int type)
-{
-	t_info		*info;
-	t_data		*data;
-
-	info = NULL;
-	data = NULL;
-	if (type)
+	int				check_t_flag(void *item, int type)
 	{
+		t_info		*info;
+		t_data		*data;
+
+		info = NULL;
+		data = NULL;
+		if (type)
+		{
 		info = (t_info *)item;
 		return (info->flags & LOW_T_FLAG);
 	}
