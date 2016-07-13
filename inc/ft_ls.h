@@ -6,53 +6,16 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/04 12:00:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/07/11 15:13:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/07/13 18:27:21 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
-# include <stdio.h>
-# include <dirent.h>
-# include <sys/stat.h>
-# include "../libft/libft.h"
-# include <sys/types.h>
-# include <pwd.h>
-# include <uuid/uuid.h>
-# include <grp.h>
-# include <time.h>
-
-# define FLAGS_SIZE 255
-# define LOW_A_FLAG 1
-# define LOW_T_FLAG 2
-# define LOW_L_FLAG 4
-# define LOW_R_FLAG 8
-# define UPP_R_FLAG 16
-
-typedef struct		s_info
-{
-	int				flags;
-	int				argc;
-	int				directory_presence;
-	int				directory_position;
-	int				position;
-	int				nb_directories;
-}					t_info;
-
-typedef struct		s_data
-{
-	char			*file_name;
-	char			*pathname;
-	int				flags;
-	int				is_dir;
-	int				nb_directories;
-	int				position;
-	long long int	total_size;
-}					t_data;
-
-typedef int			(*t_cmpf)(void *, void *);
-typedef void		(*t_applyf)(void *);
+# include "headers.h"
+# include "typedef.h"
+# include "defines.h"
 
 /* info_line.c */
 t_info				*set_directories_info(t_info *info_line, int ac, char **av);
