@@ -5,23 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/06 15:52:56 by ggane             #+#    #+#             */
-/*   Updated: 2016/06/28 12:00:37 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/05 11:27:39 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/05 16:37:30 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
-int		main(int ac, char **av)
+int     main(int ac, char **av)
 {
-	t_btree		*directories_to_sort;
-	t_info		info_line;
+    t_info  info_line;
+    t_list  *directories;
 
-	directories_to_sort = NULL;
-	if (parse_flags(ac, av, &info_line))
-		return (1);
-	directories_to_sort = sort_directories(&info_line, av, directories_to_sort);
-	sort_content(&info_line, directories_to_sort);
-	//btree_delete(directories_to_sort);
-	return (0);
+    info_line = NULL;
+    directories = NULL;
+    info_line = parse_prompt(ac, av);
+    directories = sort_directories(info_line);
+    sort_content(&directories, info_line);
+    erase_list(&directories);
+    return (0);
 }

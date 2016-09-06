@@ -5,63 +5,48 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/06/15 09:26:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/07/12 14:01:19 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/06 10:39:12 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/06 12:00:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
-int			add_flags(char	*to_check, t_info *info_line, int i)
+char    **copy_av(int ac, char **av)
 {
-	if (to_check[0] == '-')
-	{
-		if (to_check[i] == 'a')
-			info_line->flags |= LOW_A_FLAG;
-		else if (to_check[i] == 't')
-			info_line->flags |= LOW_T_FLAG;
-		else if (to_check[i] == 'l')
-			info_line->flags |= LOW_L_FLAG;
-		else if (to_check[i] == 'r')
-			info_line->flags |= LOW_R_FLAG;
-		else if (to_check[i] == 'R')
-			info_line->flags |= UPP_R_FLAG;
-		else
-		{
-			display_flags_error_msg(to_check[i]);
-			return (1);
-		}
-	}
-	return (0);
+    char    **copy;
+    int     i;
+
+    i = 1;
+    if (!(copy = (char **)malloc(sizeof(char *) * ac)))
+        return (NULL);
+    while (i < ac)
+    {
+        *copy[i] = ft_strdup(*av[i]);
+        i++;
+    }
 }
 
-int			check_authorized_flags(char *to_check, t_info *info_line)
+t_info  initialize_info_line(int ac, char **av)
 {
-	int		i;
+    t_info  info_line;
 
-	i = 1;
-	while (to_check[i])
-		if (add_flags(to_check, info_line, i++))
-			return (1);
-	return (0);
+    info_line = NULL;
+    info_line.av = copy_av(av, ac);
+    info_line.ac = ac;
+    info_line.flags = 0;
+    info_line.nb_dir = 0;
+    info_line.dir_pos = -1;
+    return (info_line);
 }
 
-int			walkthrough_command_line(int ac, char **av, t_info *info_line)
+t_info  parse_prompt(int ac, char **av)
 {
-	int		i;
+    t_info  info_line;
 
-	i = 1;
-	while (i <= ac - 1 && ft_strcmp(av[i], "--"))
-		if (check_authorized_flags(av[i++], info_line))
-			return (1);
-	info_line = set_directories_info(info_line, ac, av);
-	return (0);
-}
-
-int			parse_flags(int ac, char **av, t_info *info_line)
-{
-	info_line = initialize_info_line(info_line);
-	if (walkthrough_command_line(ac, av, info_line))
-		return (1);
-	return (0);
+    info_line = NULL;
+    info_line = initialize_info_line(ac, av);
+    parse_flags(&info_line);
+    parse_directories(&info_line);
+    return (info_line);
 }
