@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:15:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/06 18:48:55 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/06 20:19:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,7 @@ int     main(int ac, char **av)
     t_info  *info_line;
 
     info_line = NULL;
-    ft_putendl("start test");
     info_line = initialize_info_line(ac, av);
-    ft_putendl("parse_prompt ok");
     print_info_line(info_line);
     return (0);
 }
