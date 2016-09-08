@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 15:15:54 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/06 20:19:28 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/08 13:39:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void    print_av(char **av_test)
     i = 0;
     while (av_test[i] != NULL)
     {
+        //ft_putnbr(ft_strlen(av_test[i]));
+        //ft_putchar(' ');
         ft_putstr(av_test[i]);
         if (av_test[i] != NULL)
             ft_putchar(' ');
