@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/08 20:57:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/09 11:21:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void            parse_directories(t_info *info_line);
 
 char            **copy_av(int ac, char **av);
 t_info          *initialize_info_line(int ac, char **av);
-void            parse_prompt(int ac, char **av, t_info *info_line);
+t_info          *parse_prompt(int ac, char **av);
 
 //display_errors.c
 

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 19:26:00 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/08 20:43:02 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/09 11:28:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,11 +86,8 @@ int     main(int ac, char **av)
     t_info  *info_line;
 
     info_line = NULL;
-    ft_putstr("Before parsing\n\t");
-    print_info_line(info_line);
-    print_flags(info_line->flags);
-    parse_prompt(ac, av, info_line);
-    ft_putstr("After parsing\n\t");
+    info_line = parse_prompt(ac, av);
+    ft_putstr("After parsing\n");
     print_info_line(info_line);
     print_flags(info_line->flags);
     return (0);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 10:39:12 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/08 20:54:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/09 11:31:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,19 @@ t_info  *initialize_info_line(int ac, char **av)
     if (!(info_line = (t_info *)malloc(sizeof(t_info))))
         return (NULL);
     info_line->av = copy_av(ac, av);
-    info_line->ac = ac;
+    info_line->ac = ac - 1;
     info_line->flags = 0;
     info_line->nb_dir = 0;
     info_line->dir_pos = -1;
     return (info_line);
 }
 
-void    parse_prompt(int ac, char **av, t_info *info_line)
+t_info  *parse_prompt(int ac, char **av)
 {
+    t_info  *info_line;
+
     info_line = initialize_info_line(ac, av);
     parse_flags(info_line);
     parse_directories(info_line);
+    return (info_line);
 }
