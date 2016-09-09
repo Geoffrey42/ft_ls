@@ -1,4 +1,4 @@
-gcc -Wall -Wextra -Werror test_parse_flags.c ../src/parser.c ../src/parse_flags.c ../src/display_errors.c ../inc/ft_ls.h ../libft/libft.a
+#gcc -Wall -Wextra -Werror test_parse_flags.c ../src/parser.c ../src/parse_flags.c ../src/parse_directories.c ../src/display_errors.c ../inc/ft_ls.h ../libft/libft.a
 
 echo "DEUXIEME SERIE\n\n"
 echo "test 1 : ./a.out\n"

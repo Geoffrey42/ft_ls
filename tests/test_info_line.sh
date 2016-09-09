@@ -1,7 +1,6 @@
 #!/bin/sh
 
-make re && make clean
-gcc -Wall -Wextra -Werror test_info_line.c ../src/parser.c ../inc/ft_ls.h ../libft/libft.a
+#gcc -Wall -Wextra -Werror test_info_line.c ../src/parser.c ../inc/ft_ls.h ../libft/libft.a
 
 echo "PREMIERE SERIE\n\n"
 echo "test 1 : ./a.out d1 d2\n"
