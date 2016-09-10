@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   merge_sort.c                                       :+:      :+:    :+:   */
+/*   test_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/10 14:04:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 18:26:24 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/10 17:50:32 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/10 20:48:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_list  *merge_sort_directories(t_info *info_line)
+void    display_data(t_data *data)
 {
-    t_list  *directories;
+    ft_putstr("name : ");
+    ft_putendl(data->name);
+    ft_putstr("pathname : ");
+    ft_putendl(data->pathname);
+    ft_putstr("error : ");
+    ft_putnbr(data->error);
+    ft_putchar('\n');
+}
 
-    directories = NULL;
-    info_line = NULL;
-    return (directories);
+void            print_list(t_list *list)
+{
+    t_list  *tmp;
+
+    tmp = list;
+    while (tmp)
+    {
+        display_data(tmp->content);
+        tmp = tmp->next;
+    }
 }

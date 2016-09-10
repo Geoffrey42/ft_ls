@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 15:54:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/10 20:30:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,16 @@
 
 int     check_if_error_dir(char *name)
 {
-    return (0);
+    DIR             *dirp;
+    //struct dirent   *content_to_check;
+    int             res;
+
+    res = 0;
+    dirp = opendir(name);
+    if (readdir(dirp) == NULL)
+        res = errno;
+    closedir(dirp);
+    return (res);
 }
 
 char    *create_pathname(char *parent, char *son)
@@ -32,6 +41,8 @@ t_data  *initialize_data_dir(char *name)
         return (NULL);
     data_dir->name = ft_strdup(name);
     data_dir->pathname = create_pathname(ft_strdup(""), name);
+    ft_putstr("data_dir->pathname ok : ");
+    ft_putendl(data_dir->pathname);
     data_dir->error = check_if_error_dir(name);
     return (data_dir);
 }

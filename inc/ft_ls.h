@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 15:56:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/10 18:45:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define FT_LS_H
 
 # include <stdio.h>
+# include <dirent.h>
+# include <errno.h>
 # include "../libft/libft.h"
 
 # define LOW_A_FLAG 1
@@ -46,10 +48,12 @@ t_data          *initialize_data_dir(char *name);
 
 //merge_sort.c
 
-t_list          *merge_sort_directories(void);
+t_list          *merge_sort_directories(t_info *info_line);
 
 //sort_directories.c
 
+t_list          *insert_current_directory(void);
+t_list          *insert_several_directories(t_info *info_line);
 t_list          *check_and_insert_data(t_list *directories, char *name);
 t_list          *create_directories_list(t_info *info_line);
 t_list          *sort_directories(t_info *info_line);
@@ -76,4 +80,8 @@ t_info          *parse_prompt(int ac, char **av);
 
 void            display_flag_error_msg(char bad_option);
 
+//test_functions.c
+
+void            display_data(t_data *list);
+void            print_list(t_list *list);
 #endif

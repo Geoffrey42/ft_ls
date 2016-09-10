@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 14:00:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 15:41:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/10 18:47:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,16 @@ t_list  *check_and_insert_data(t_list *directories, char *name)
     return (directories);
 }
 
-t_list  *create_directories_list(t_info *info_line)
+t_list  *insert_current_directory(void)
+{
+    t_list  *directory;
+
+    directory = NULL;
+    directory = check_and_insert_data(directory, ".");
+    return (directory);
+}
+
+t_list  *insert_several_directories(t_info *info_line)
 {
     t_list  *directories;
     int     i;
@@ -34,11 +43,23 @@ t_list  *create_directories_list(t_info *info_line)
     return (directories);
 }
 
+t_list  *create_directories_list(t_info *info_line)
+{
+    t_list  *directories;
+
+    directories = NULL;
+    if (info_line->nb_dir > 0)
+        directories = insert_several_directories(info_line);
+    else
+        directories = insert_current_directory();
+    return (directories);
+}
+
 t_list  *sort_directories(t_info *info_line)
 {
     t_list  *directories;
 
     directories = create_directories_list(info_line);
-    directories = merge_sort_directories();
+    //directories = merge_sort_directories(info_line);
     return (directories);
 }
