@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 14:07:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/10 15:56:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,24 @@ typedef struct  s_data
 {
     char        *name;
     char        *pathname;
-    int         flags;
     int         error;
-}
+}               t_data;
+
+//create_data_dir.c
+
+int             check_if_error_dir(char *name);
+char            *create_pathname(char *parent, char *son);
+t_data          *initialize_data_dir(char *name);
 
 //merge_sort.c
 
-t_list  *merge_sort_directories(void);
+t_list          *merge_sort_directories(void);
 
 //sort_directories.c
 
-t_list  *insert_directories_list(t_info *info_line);
-t_list  *sort_directories(t_info *info_line);
+t_list          *check_and_insert_data(t_list *directories, char *name);
+t_list          *create_directories_list(t_info *info_line);
+t_list          *sort_directories(t_info *info_line);
 
 //parser_flags.c
 
