@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 19:58:23 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/08 13:42:58 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/09 14:55:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void    print_flags(int flags)
         switcher = 1;
     }
     if (switcher)
-        ft_putendl(" activated");
+        ft_putendl(" activated\n");
     else
-        ft_putendl(" not activated");
+        ft_putendl(" not activated\n");
 }
 
 int     main(int ac, char **av)

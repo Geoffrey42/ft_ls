@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/09 11:32:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/09 14:44:53 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ void    check_nb_directories(t_info *info_line)
 {
     int     i;
 
-    i = info_line->dir_pos;
+    if (info_line->dir_pos > -1)
+        i = info_line->dir_pos;
+    else
+        return ;
     while (info_line->av[i])
         i++;
     info_line->nb_dir = i - info_line->dir_pos;

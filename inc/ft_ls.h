@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/09 11:21:02 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/10 14:07:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ typedef struct  s_info
     int         nb_dir;
     int         dir_pos;
 }               t_info;
+
+typedef struct  s_data
+{
+    char        *name;
+    char        *pathname;
+    int         flags;
+    int         error;
+}
+
+//merge_sort.c
+
+t_list  *merge_sort_directories(void);
+
+//sort_directories.c
+
+t_list  *insert_directories_list(t_info *info_line);
+t_list  *sort_directories(t_info *info_line);
 
 //parser_flags.c
 
