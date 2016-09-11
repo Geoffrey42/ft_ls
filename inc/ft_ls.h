@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 17:19:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 19:35:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,18 @@ t_data			*initialize_data_dir(char *name);
 
 //merge_sort.c
 
-t_list			*merge_sort_directories(t_info *info_line);
+t_list			*merge_lists(t_list *a, t_list *b);
+void			partition(t_list *head, t_list **front, t_list **back);
+void			merge_sort(t_list **source);
+t_list			*sort_directories(t_info *info_line, t_list *directories);
 
-//sort_directories.c
+//list_directories.c
 
 t_list			*insert_current_directory(void);
 t_list			*insert_several_directories(t_info *info_line);
 t_list			*check_and_insert_data(t_list *directories, char *name);
 t_list			*create_directories_list(t_info *info_line);
-t_list			*sort_directories(t_info *info_line);
+t_list			*list_and_sort_directories(t_info *info_line);
 
 //parser_flags.c
 
@@ -84,4 +87,5 @@ void			display_flag_error_msg(char bad_option);
 
 void			display_data(t_list *list);
 void			print_list(t_list *list);
+
 #endif

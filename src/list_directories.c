@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_directories.c                                 :+:      :+:    :+:   */
+/*   list_directories.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/09 14:00:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 17:15:35 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/11 18:05:09 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/11 19:34:52 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ t_list	*create_directories_list(t_info *info_line)
 	return (directories);
 }
 
-t_list	*sort_directories(t_info *info_line)
+t_list	*list_and_sort_directories(t_info *info_line)
 {
 	t_list	*directories;
 
 	directories = create_directories_list(info_line);
-	directories = merge_sort_directories(info_line);
+	directories = sort_directories(info_line, directories);
 	return (directories);
 }

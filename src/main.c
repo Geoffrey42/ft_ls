@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:27:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 16:56:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 18:02:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 
 	directories = NULL;
 	info_line = parse_prompt(ac, av);
-	directories = sort_directories(info_line);
+	directories = list_and_sort_directories(info_line);
 	sort_content(&directories, info_line);
 	print_content(directories, info_line);
 	erase_list(&directories);

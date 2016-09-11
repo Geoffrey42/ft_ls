@@ -16,6 +16,6 @@
 #./test_parse_prompt.sh
 #rm a.out
 
-gcc -Wall -Wextra -Werror test_create_directories_list.c ../src/create_data_dir.c ../src/display_errors.c ../src/merge_sort.c ../src/parser.c ../src/parser_directories.c ../src/parser_flags.c ../src/sort_directories.c ../src/test_functions.c ../inc/ft_ls.h ../libft/libft.a
+gcc -Wall -Wextra -Werror test_create_directories_list.c ../src/create_data_dir.c ../src/display_errors.c ../src/merge_sort.c ../src/parser.c ../src/parser_directories.c ../src/parser_flags.c ../src/list_directories.c ../src/test_functions.c ../inc/ft_ls.h ../libft/libft.a
 ./test_create_directories_list.sh
 rm a.out
