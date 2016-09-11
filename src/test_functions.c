@@ -6,31 +6,31 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 17:50:32 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 20:48:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 12:25:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void    display_data(t_data *data)
+void    display_data(t_list *list)
 {
+    t_data  *tmp;
+
+    tmp = (t_data *)list->content;
     ft_putstr("name : ");
-    ft_putendl(data->name);
+    ft_putendl(tmp->name);
     ft_putstr("pathname : ");
-    ft_putendl(data->pathname);
-    ft_putstr("error : ");
-    ft_putnbr(data->error);
-    ft_putchar('\n');
+    ft_putendl(tmp->pathname);
+    //ft_putstr("error : ");
+    //ft_putnbr(tmp->error);
+    //ft_putchar('\n');
 }
 
 void            print_list(t_list *list)
 {
-    t_list  *tmp;
-
-    tmp = list;
-    while (tmp)
+    while (list)
     {
-        display_data(tmp->content);
-        tmp = tmp->next;
+        display_data(list);
+        list = list->next;
     }
 }

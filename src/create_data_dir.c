@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 20:30:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 12:25:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int     check_if_error_dir(char *name)
     res = 0;
     dirp = opendir(name);
     if (readdir(dirp) == NULL)
-        res = errno;
+        res = 1;
     closedir(dirp);
     return (res);
 }
@@ -37,12 +37,11 @@ t_data  *initialize_data_dir(char *name)
 {
     t_data  *data_dir;
 
+    data_dir = NULL;
     if (!(data_dir = (t_data *)malloc(sizeof(t_data))))
         return (NULL);
     data_dir->name = ft_strdup(name);
-    data_dir->pathname = create_pathname(ft_strdup(""), name);
-    ft_putstr("data_dir->pathname ok : ");
-    ft_putendl(data_dir->pathname);
-    data_dir->error = check_if_error_dir(name);
+    data_dir->pathname = create_pathname("", name);
+    //data_dir->error = check_if_error_dir(name);
     return (data_dir);
 }

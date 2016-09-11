@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 14:00:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 18:47:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 12:25:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 t_list  *check_and_insert_data(t_list *directories, char *name)
 {
-    t_data  *data_dir;
+    t_data  *data;
 
-    data_dir = NULL;
-    data_dir = initialize_data_dir(name);
-    ft_lstadd(&directories, ft_lstnew(data_dir, sizeof(data_dir)));
+    data = NULL;
+    data = initialize_data_dir(name);
+    ft_lstadd(&directories, ft_lstnew(data, sizeof(t_data)));
     return (directories);
 }
 
@@ -38,8 +38,20 @@ t_list  *insert_several_directories(t_info *info_line)
 
     directories = NULL;
     i = info_line->dir_pos;
-    while (i <= info_line->nb_dir)
-        directories = check_and_insert_data(directories, info_line->av[i++]);
+    ft_putstr("nb_dir : ");
+    ft_putnbr(info_line->nb_dir);
+    ft_putstr("\nac : ");
+    ft_putnbr(info_line->ac);
+    ft_putchar('\n');
+    while (i <= info_line->ac - 1)
+    {
+        /*ft_putstr("av[");
+        ft_putnbr(i);
+        ft_putstr("] : ");
+        ft_putendl(info_line->av[i]);*/
+        directories = check_and_insert_data(directories, info_line->av[i]);
+        i++;
+    }
     return (directories);
 }
 
@@ -52,6 +64,7 @@ t_list  *create_directories_list(t_info *info_line)
         directories = insert_several_directories(info_line);
     else
         directories = insert_current_directory();
+    print_list(directories);
     return (directories);
 }
 

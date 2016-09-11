@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/10 18:45:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 11:49:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,6 @@ void            display_flag_error_msg(char bad_option);
 
 //test_functions.c
 
-void            display_data(t_data *list);
+void            display_data(t_list *list);
 void            print_list(t_list *list);
 #endif
