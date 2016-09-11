@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 14:00:05 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 12:25:45 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 15:31:00 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,8 @@ t_list  *insert_several_directories(t_info *info_line)
 
     directories = NULL;
     i = info_line->dir_pos;
-    ft_putstr("nb_dir : ");
-    ft_putnbr(info_line->nb_dir);
-    ft_putstr("\nac : ");
-    ft_putnbr(info_line->ac);
-    ft_putchar('\n');
     while (i <= info_line->ac - 1)
-    {
-        /*ft_putstr("av[");
-        ft_putnbr(i);
-        ft_putstr("] : ");
-        ft_putendl(info_line->av[i]);*/
-        directories = check_and_insert_data(directories, info_line->av[i]);
-        i++;
-    }
+        directories = check_and_insert_data(directories, info_line->av[i++]);
     return (directories);
 }
 
@@ -64,7 +52,6 @@ t_list  *create_directories_list(t_info *info_line)
         directories = insert_several_directories(info_line);
     else
         directories = insert_current_directory();
-    print_list(directories);
     return (directories);
 }
 

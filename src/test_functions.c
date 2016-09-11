@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 17:50:32 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 12:25:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/11 15:29:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,10 @@ void    display_data(t_list *list)
     ft_putendl(tmp->name);
     ft_putstr("pathname : ");
     ft_putendl(tmp->pathname);
-    //ft_putstr("error : ");
-    //ft_putnbr(tmp->error);
-    //ft_putchar('\n');
+    ft_putstr("error : ");
+    ft_putnbr(tmp->error);
+    ft_putchar('\n');
+    ft_putendl("------");
 }
 
 void            print_list(t_list *list)
