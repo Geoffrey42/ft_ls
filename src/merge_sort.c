@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 14:04:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 19:37:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/14 16:24:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,13 @@
 t_list	*merge_lists(t_list *a, t_list *b)
 {
 	t_list	*merged_list;
-	t_data	*tmp_a;
-	t_data	*tmp_b;
 
 	merged_list = NULL;
 	if (a == NULL)
 		return (b);
 	else if (b == NULL)
 		return (a);
-	tmp_a = (t_data *)a->content;
-	tmp_b = (t_data *)b->content;
-	if (ft_strcmp(tmp_a->name, tmp_b->name) <= 0)
+	if (choose_compare_list_function(a, b) <= 0)
 	{
 		merged_list = a;
 		merged_list->next = merge_lists(a->next, b);
@@ -83,13 +79,4 @@ void	merge_sort(t_list **source)
 	merge_sort(&a);
 	merge_sort(&b);
 	*source = merge_lists(a, b);
-}
-
-t_list	*sort_directories(t_info *info_line, t_list *directories)
-{
-	t_info	*tmp;
-
-	tmp = info_line;
-	merge_sort(&directories);
-	return (directories);
 }

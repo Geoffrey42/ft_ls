@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 16:59:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/14 11:44:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*create_pathname(char *parent, char *son)
 	return (son);
 }
 
-t_data	*initialize_data_dir(char *name)
+t_data	*initialize_data_dir(char *name, int flags)
 {
 	t_data	*data_dir;
 
@@ -42,5 +42,6 @@ t_data	*initialize_data_dir(char *name)
 	data_dir->name = ft_strdup(name);
 	data_dir->pathname = create_pathname("", name);
 	data_dir->error = check_if_error_dir(name);
+	data_dir->flags = flags;
 	return (data_dir);
 }

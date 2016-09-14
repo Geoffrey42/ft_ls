@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 19:35:25 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/14 16:24:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <errno.h>
+# include <sys/stat.h>
 # include "../libft/libft.h"
 
 # define LOW_A_FLAG 1
@@ -38,26 +39,33 @@ typedef struct	s_data
 	char		*name;
 	char		*pathname;
 	int			error;
+	int			flags;
 }				t_data;
+
+//compare_list_data.c
+
+int				choose_compare_list_function(t_list *item1, t_list *item2);
+int				check_nanoseconds(char *str1, char *str2);
+int				cb_timecmp_list(char *str1, char *str2);
 
 //create_data_dir.c
 
 int				check_if_error_dir(char *name);
 char			*create_pathname(char *parent, char *son);
-t_data			*initialize_data_dir(char *name);
+t_data			*initialize_data_dir(char *name, int flags);
 
 //merge_sort.c
 
 t_list			*merge_lists(t_list *a, t_list *b);
 void			partition(t_list *head, t_list **front, t_list **back);
 void			merge_sort(t_list **source);
-t_list			*sort_directories(t_info *info_line, t_list *directories);
 
 //list_directories.c
 
-t_list			*insert_current_directory(void);
+t_list			*insert_current_directory(int flags);
 t_list			*insert_several_directories(t_info *info_line);
-t_list			*check_and_insert_data(t_list *directories, char *name);
+t_list			*check_and_insert_data
+				(t_list *directories, char *name, int flags);
 t_list			*create_directories_list(t_info *info_line);
 t_list			*list_and_sort_directories(t_info *info_line);
 
@@ -87,5 +95,6 @@ void			display_flag_error_msg(char bad_option);
 
 void			display_data(t_list *list);
 void			print_list(t_list *list);
+void			print_flags(int flags);
 
 #endif

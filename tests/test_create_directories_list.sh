@@ -2,7 +2,8 @@
 
 echo "\nCINQUIEME SERIE : tests de create_directories_list\n\n"
 mkdir AAA ccc LLL error2
-chmod -r error2
+touch zzz xxx yyy iii
+chmod -r error2 iii
 echo "test 1 : ./a.out\n"
 ./a.out
 echo "\ntest 2 : ./a.out -a\n"
@@ -19,7 +20,7 @@ echo "\ntest 7 : ../a.out -a -t -- AAA ccc LLL\n"
 ./a.out -a -t -- AAA ccc LLL
 echo "\ntest 8 : ../a.out -a -t -- AAA error1 ccc LLL\n"
 ./a.out -a -t -- AAA error1 ccc LLL
-echo "\ntest 9 : ../a.out -a -t -- AAA error1 ccc LLL error2\n"
-./a.out -a -t -- AAA error1 ccc LLL error2
-chmod +r error2
-rm -rf AAA ccc LLL error2
+echo "\ntest 9 : ../a.out -a -t -- AAA zzz error1 xxx ccc yyy LLL iii error2" 
+./a.out -a -t -- AAA zzz error1 xxx ccc yyy LLL iii error2 
+chmod +r error2 iii
+rm -rf AAA ccc LLL error2 zzz xxx yyy iii
