@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/14 16:24:47 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/15 16:37:47 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,13 @@ typedef struct	s_data
 	char		*pathname;
 	int			error;
 	int			flags;
+	int			is_dir;
+	t_btree		*file;
 }				t_data;
+
+//put_content_in_trees.c
+
+t_list			*put_content_in_trees(t_list *directories);
 
 //compare_list_data.c
 
@@ -53,6 +59,7 @@ int				cb_timecmp_list(char *str1, char *str2);
 int				check_if_error_dir(char *name);
 char			*create_pathname(char *parent, char *son);
 t_data			*initialize_data_dir(char *name, int flags);
+int				check_if_dir(char *file);
 
 //merge_sort.c
 
@@ -96,5 +103,8 @@ void			display_flag_error_msg(char bad_option);
 void			display_data(t_list *list);
 void			print_list(t_list *list);
 void			print_flags(int flags);
+void			cb_ft_putendl(void *item);
+void			display_content_tree(t_data *content);
+void			display_trees(t_list *list);
 
 #endif

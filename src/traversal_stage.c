@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_parse_flags.c                                 :+:      :+:    :+:   */
+/*   traversal_stage.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/06 19:58:23 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/14 13:49:58 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/15 16:40:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int     main(int ac, char **av)
+void		display_and_delete(void *item)
 {
-    t_info  *info_line;
+	t_data	*data;
 
-    info_line = NULL;
-    info_line = initialize_info_line(ac, av);
-    parse_flags(info_line);
-    print_flags(info_line->flags);
-    return (0);
+	data = (t_data *)item;
+	ft_putendl(data->name);
+}
+
+t_list		*traversal_stage(t_list *directories)
+{
+	t_data	*tmp;
+	void	(*applyf)(void *);
+
+	applyf = &display_and_delete;
+	while (directories)
+	{
+		tmp = (t_data *)directories->content;
+		choose_infix_traversal(tmp->flags, tmp->files, applyf);
+		directories = directories->next;
+	}
+	return (directories);
 }
