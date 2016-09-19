@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/15 16:40:22 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/19 18:30:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_cmpf	choose_compare_tree_function(t_data *data)
 {
 	int		(*cmpf)(void *, void *);
 
-	if (data->flags & LOW_T_FLAG == 0)
+	if ((data->flags & LOW_T_FLAG) == 0)
 		return (cmpf = &cb_timecmp_tree);
 	else
 		return (cmpf = &cb_strcmp_tree);
@@ -28,7 +28,7 @@ t_btree	*insert_data_in_tree(t_data *data,
 	t_data	*content_data;
 
 	content_data = initialize_data_dir(file_name, data->pathname, data->flags);
-	btree_insert_data(&tree, (void *)content_data, cmpf);
+	btree_insert_data(&content, (void *)content_data, cmpf);
 	return (content);
 }
 
@@ -40,20 +40,22 @@ t_btree	*insert_content(t_list *directories, int (*cmpf)(void *, void *))
 	struct dirent	*file;
 
 	content = NULL;
-	data = (t_data)directories->content;
+	data = (t_data *)directories->content;
 	if (!(dirp = opendir(data->name)))
 		return (NULL);
 	while ((file = readdir(dirp)))
-		content = insert_data_in_tree(data, content, file_name, cmpf);
+		content = insert_data_in_tree(data, content, data->name, cmpf);
 	return (content);
 }
 
 t_list	*open_directory(t_list *directories)
 {
 	int		(*cmpf)(void *, void *);
+	t_data	*tmp;
 
+	tmp = (t_data *)directories->content;
 	cmpf = choose_compare_tree_function((t_data *)directories->content);
-	directories->content->files = (void *)insert_content(directories, cmpf);
+	tmp->file = insert_content(directories, cmpf);
 	return (directories);
 }
 

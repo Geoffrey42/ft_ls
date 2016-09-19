@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 15:09:59 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/15 16:40:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/19 18:20:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		cb_timecmp_tree(void *item1, void *item2)
 	else if (item_stat1.st_mtime > item_stat2.st_mtime)
 		return (-1);
 	else if (item_stat1.st_mtime == item_stat2.st_mtime)
-		return (check_nanosec(item1, item2));
+		return (check_nanoseconds(item1, item2));
 	return (0);
 }
 
@@ -92,5 +92,5 @@ int		cb_strcmp_tree(void *item1, void *item2)
 
 	tmp1 = (t_data *)item1;
 	tmp2 = (t_data *)item2;
-	return (ft_strcmp(tmp1->file_name, tmp2->file_name));
+	return (ft_strcmp(tmp1->name, tmp2->name));
 }
