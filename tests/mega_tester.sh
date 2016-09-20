@@ -22,4 +22,4 @@
 
 gcc -Wall -Wextra -Werror test_insertion_stage.c ../src/compare_list_data.c ../src/create_data_dir.c ../src/display_errors.c ../src/insertion_stage.c ../src/list_directories.c ../src/merge_sort.c ../src/parser.c ../src/parser_directories.c ../src/parser_flags.c ../src/test_functions.c ../src/traversal_stage.c ../inc/ft_ls.h ../libft/libft.a
 ./test_insertion_stage.sh
-rm a.out
+#rm a.out

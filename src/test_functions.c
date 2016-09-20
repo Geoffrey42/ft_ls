@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 17:50:32 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/15 16:38:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 15:23:20 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,29 @@ void	cb_ft_putendl(void *item)
 
 	tmp = (t_data *)item;
 	ft_putstr("name : ");
-	ft_putendl(item->name);
-	ft_putstr("pathname : ");
-	ft_putendl(item->pathname);
+	ft_putendl(tmp->name);
+	/*ft_putstr("pathname : ");
+	ft_putendl(tmp->pathname);*/
 }
 
 void	display_content_tree(t_data *content)
 {
-	void	(applyf *)(void *);
+	void	(*applyf)(void *);
 
 	applyf = &cb_ft_putendl;
-	btree_apply_infix(content->files, applyf);
+	btree_apply_infix(content->file, applyf);
 }
 
 void	display_trees(t_list *list)
 {
+	t_data	*tmp;
+
+	ft_putendl("Affichage contenu des arbres");
 	while (list)
 	{
-		ft_putendl((char *)list->content->name);
-		display_content_tree((t_data *)list->content);
+		tmp = (t_data *)list->content;
+		ft_putendl(tmp->name);
+		display_content_tree((tmp));
 		list = list->next;
 	}
 }
@@ -48,16 +52,15 @@ void	display_data(t_list *list)
 	tmp = (t_data *)list->content;
 	ft_putstr("name : ");
 	ft_putendl(tmp->name);
-	/*ft_putstr("pathname : ");
+	ft_putstr("pathname : ");
 	ft_putendl(tmp->pathname);
 	ft_putstr("error : ");
 	ft_putnbr(tmp->error);
 	ft_putchar('\n');
-	print_flags(tmp->flags);
-	ft_putchar('\n');*/
 	ft_putstr("is_dir : ");
 	ft_putnbr(tmp->is_dir);
 	ft_putchar('\n');
+	print_flags(tmp->flags);
 	ft_putendl("------");
 }
 

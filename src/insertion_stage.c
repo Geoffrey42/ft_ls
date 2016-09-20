@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/19 18:30:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 15:39:21 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_cmpf	choose_compare_tree_function(t_data *data)
 {
 	int		(*cmpf)(void *, void *);
 
-	if ((data->flags & LOW_T_FLAG) == 0)
+	if ((data->flags & LOW_T_FLAG) == LOW_T_FLAG)
 		return (cmpf = &cb_timecmp_tree);
 	else
 		return (cmpf = &cb_strcmp_tree);
@@ -44,7 +44,7 @@ t_btree	*insert_content(t_list *directories, int (*cmpf)(void *, void *))
 	if (!(dirp = opendir(data->name)))
 		return (NULL);
 	while ((file = readdir(dirp)))
-		content = insert_data_in_tree(data, content, data->name, cmpf);
+		content = insert_data_in_tree(data, content, file->d_name, cmpf);
 	return (content);
 }
 
@@ -61,10 +61,14 @@ t_list	*open_directory(t_list *directories)
 
 t_list	*insertion_stage(t_list *directories)
 {
-	while (directories)
+	t_list	*tmp;
+
+	tmp = directories;
+	while (tmp)
 	{
-		directories = open_directory(directories);
-		directories = directories->next;
+		//tmp = open_directory(tmp);
+		open_directory(tmp);
+		tmp = tmp->next;
 	}
 	return (directories);
 }

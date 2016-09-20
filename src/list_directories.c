@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/11 18:05:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/15 16:40:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 16:40:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*check_and_insert_data(t_list *directories, char *name, int flags)
 	t_data	*data;
 
 	data = NULL;
-	data = initialize_data_dir(name, "", flags);
+	data = initialize_data_dir_first_call(name, "", flags);
 	ft_lstadd(&directories, ft_lstnew(data, sizeof(t_data)));
 	return (directories);
 }

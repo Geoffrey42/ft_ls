@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/19 18:26:21 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 16:40:25 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,20 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//traversal_stage.c
+
+void			choose_infix_traversal(int flags, t_btree *tree,
+				void (*applyf)(void *));
+void			display_and_delete(void *item);
+t_list			*traversal_stage(t_list *directories);
+
 //insertion_stage.c
 
 t_cmpf			choose_compare_tree_function(t_data *data);
-t_btree			*insert_data_in_tree(t_data *data, t_btree *content, char *file_name, int (*cmpf)(void *, void *));
-t_btree			*insert_content(t_list *directories, int (*cmpf)(void *, void *));
+t_btree			*insert_data_in_tree(t_data *data, t_btree *content,
+				char *file_name, int (*cmpf)(void *, void *));
+t_btree			*insert_content(t_list *directories,
+				int (*cmpf)(void *, void *));
 t_list			*open_directory(t_list *directories);
 t_list			*insertion_stage(t_list *directories);
 t_list			*put_content_in_trees(t_list *directories);
@@ -62,13 +71,15 @@ int				check_nanoseconds(char *str1, char *str2);
 int				cb_timecmp_list(char *str1, char *str2);
 int				cb_timecmp_tree(void *item1, void *item2);
 int				cb_strcmp_tree(void *item1, void *item2);
+int				check_nanoseconds_tree(void *item1, void *item2);
 
 //create_data_dir.c
 
 int				check_if_error_dir(char *name);
 char			*create_pathname(char *parent, char *son);
 t_data			*initialize_data_dir(char *name, char *parent, int flags);
-int				check_if_dir(char *file);
+t_data			*initialize_data_dir_first_call
+				(char *name, char *parent, int flags);
 
 //merge_sort.c
 

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/19 18:26:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 16:41:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,21 @@ t_data	*initialize_data_dir(char *name, char *parent, int flags)
 		return (NULL);
 	data_dir->name = ft_strdup(name);
 	data_dir->pathname = create_pathname(parent, name);
+	data_dir->error = check_if_error_dir(name);
+	data_dir->flags = flags;
+	return (data_dir);
+}
+
+t_data	*initialize_data_dir_first_call(char *name, char *parent, int flags)
+{
+	t_data	*data_dir;
+
+	data_dir = NULL;
+	if (!(data_dir = (t_data *)malloc(sizeof(t_data))))
+		return (NULL);
+	data_dir->name = ft_strdup(name);
+	parent = ft_strdup(data_dir->name);
+	data_dir->pathname = parent;
 	data_dir->error = check_if_error_dir(name);
 	data_dir->flags = flags;
 	return (data_dir);
