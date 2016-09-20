@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/20 14:19:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 17:47:56 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,23 @@ void		display_and_delete(void *item)
 t_list		*traversal_stage(t_list *directories)
 {
 	t_data	*tmp;
+	t_list	*tmp_list;
 	void	(*applyf)(void *);
 
 	applyf = &display_and_delete;
-	while (directories)
+	tmp_list = directories;
+	while (tmp_list)
 	{
-		tmp = (t_data *)directories->content;
+		tmp = (t_data *)tmp_list->content;
+		display_dir_title(tmp->pathname);
 		choose_infix_traversal(tmp->flags, tmp->file, applyf);
-		directories = directories->next;
+		tmp_list = tmp_list->next;
 	}
 	return (directories);
+}
+
+void		display_dir_title(char *name)
+{
+	ft_putstr(name);
+	ft_putendl(":");
 }

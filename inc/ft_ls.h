@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/20 16:40:25 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/20 17:30:14 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void			choose_infix_traversal(int flags, t_btree *tree,
 				void (*applyf)(void *));
 void			display_and_delete(void *item);
 t_list			*traversal_stage(t_list *directories);
+void			display_dir_title(char *name);
 
 //insertion_stage.c
 
