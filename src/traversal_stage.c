@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/21 16:08:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/21 23:38:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		display_content(void *item)
 	ft_putendl(data->name);
 }
 
-t_list		*traversal_stage(t_list *directories)
+/*t_list		*traversal_stage(t_list *directories)
 {
 	t_data	*tmp;
 	t_list	*tmp_list;
@@ -45,6 +45,23 @@ t_list		*traversal_stage(t_list *directories)
 		tmp_list = tmp_list->next;
 	}
 	return (directories);
+}*/
+
+void		traversal_stage(t_list *directories)
+{
+	t_data	*tmp;
+	t_list	*tmp_list;
+	void	(*applyf)(void *);
+
+	applyf = &display_content;
+	tmp_list = directories;
+	while (tmp_list)
+	{
+		tmp = (t_data *)tmp_list->content;
+		display_dir_title(tmp->pathname);
+		choose_infix_traversal(tmp->flags, tmp->file, applyf);
+		tmp_list = tmp_list->next;
+	}
 }
 
 void		display_dir_title(char *name)
