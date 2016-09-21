@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/20 17:47:56 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/21 16:08:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		choose_infix_traversal
 		btree_apply_infix(tree, applyf);
 }
 
-void		display_and_delete(void *item)
+void		display_content(void *item)
 {
 	t_data	*data;
 
@@ -35,7 +35,7 @@ t_list		*traversal_stage(t_list *directories)
 	t_list	*tmp_list;
 	void	(*applyf)(void *);
 
-	applyf = &display_and_delete;
+	applyf = &display_content;
 	tmp_list = directories;
 	while (tmp_list)
 	{
