@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/21 16:06:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/21 23:19:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//recursive_flag.c
+
+t_list			*create_new_dir_list(t_data *old_data, t_list *new_dir);
+t_list			*reverse_recursive_infix(int flags, t_btree *root);
+t_list			*regular_recursive_infix(int flags, t_btree *root);
+t_list			*choose_recursive_infix_traversal(t_list *list);
+t_list			*recursive_traversal_stage(t_list *directories);
 //traversal_stage.c
 
 void			choose_infix_traversal(int flags, t_btree *tree,

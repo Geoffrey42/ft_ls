@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/20 15:39:21 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/21 23:15:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,13 @@ t_list	*insertion_stage(t_list *directories)
 
 t_list	*put_content_in_trees(t_list *directories)
 {
+	t_data	*data;
+
+	data = (t_data *)directories->content;
 	directories = insertion_stage(directories);
-	directories = traversal_stage(directories);
+	if ((directories->flags & UPP_R_FLAG) == 0)
+		directories = traversal_stage(directories);
+	else
+		directories = recursive_traversal_stage(directories);
 	return (directories);
 }
