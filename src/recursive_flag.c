@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 14:08:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 15:53:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,20 @@ void	create_new_dir_list(t_data *old_data, t_list **new_dir)
 	}
 }
 
-/*t_list	*reverse_recursive_infix(int flags, t_btree *root)
+void	reverse_recursive_infix(int flags, t_btree *root, t_list **new_dir)
 {
 	t_data	*old_data;
-	t_list	*new_dir;
 
 	old_data = NULL;
-	new_dir = NULL;
 	if (is_empty(root))
 	{
 		old_data = (t_data *)root->item;
-		reverse_recursive_infix(flags, root->right);
+		reverse_recursive_infix(flags, root->right, new_dir);
 		display_content(root->item);
-		new_dir = create_new_dir_list(old_data, new_dir);
-		reverse_recursive_infix(flags, root->left);
+		create_new_dir_list(old_data, new_dir);
+		reverse_recursive_infix(flags, root->left, new_dir);
 	}
-	return (new_dir);
-}*/
+}
 
 void	regular_recursive_infix(int flags, t_btree *root, t_list **new_dir)
 {
@@ -64,17 +61,20 @@ t_list	*choose_recursive_infix_traversal(t_list *list, t_list *new_dir)
 	data = (t_data *)list->content;
 	if ((data->flags & LOW_R_FLAG) != 0)
 	{
-		//list = reverse_recursive_infix(data->flags, data->file);
+		reverse_recursive_infix(data->flags, data->file, &new_dir);
 		ft_putendl("--reverse_list :");
-		print_list(list);
-		return (list);
+		print_list(new_dir);
+		ft_putendl("----------------");
+		return (new_dir);
 	}
 	else
 	{
+		ft_putendl("****************");
 		regular_recursive_infix(data->flags, data->file, &new_dir);
-		ft_putendl("\n--regular_list :\n");
+		ft_putendl("****************");
+		/*ft_putendl("--regular_list :");
 		print_list(new_dir);
-		ft_putendl("----------------");
+		ft_putendl("----------------");*/
 		return (new_dir);
 	}
 }
@@ -91,7 +91,12 @@ void	recursive_traversal_stage(t_list *directories)
 	{
 		new_dir = choose_recursive_infix_traversal(tmp, new_dir);
 		if (new_dir)
+		{
+			merge_sort(&new_dir);
 			new_dir = put_content_in_trees(new_dir);
+			free(new_dir);
+			new_dir = NULL;
+		}
 		tmp = tmp->next;
 	}
 }

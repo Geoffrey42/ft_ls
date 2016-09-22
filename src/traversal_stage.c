@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 14:03:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 15:32:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		display_content(void *item)
 	if (data->error == 0 && data->name[0] != '.')
 	{
 		ft_putstr(data->name);
-		ft_putendl(" -- est un dossier");
+		ft_putendl("/");
 	}
 	else if (data->error != 0 && data->name[0] != '.')
 		ft_putendl(data->name);
