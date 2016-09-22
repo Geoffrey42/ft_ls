@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 15:50:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 15:57:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_list	*insertion_stage(t_list *directories)
 	tmp = directories;
 	while (tmp)
 	{
-		//tmp = open_directory(tmp);
 		open_directory(tmp);
 		tmp = tmp->next;
 	}

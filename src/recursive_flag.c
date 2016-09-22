@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 15:53:48 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 16:00:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,23 +60,10 @@ t_list	*choose_recursive_infix_traversal(t_list *list, t_list *new_dir)
 
 	data = (t_data *)list->content;
 	if ((data->flags & LOW_R_FLAG) != 0)
-	{
 		reverse_recursive_infix(data->flags, data->file, &new_dir);
-		ft_putendl("--reverse_list :");
-		print_list(new_dir);
-		ft_putendl("----------------");
-		return (new_dir);
-	}
 	else
-	{
-		ft_putendl("****************");
 		regular_recursive_infix(data->flags, data->file, &new_dir);
-		ft_putendl("****************");
-		/*ft_putendl("--regular_list :");
-		print_list(new_dir);
-		ft_putendl("----------------");*/
-		return (new_dir);
-	}
+	return (new_dir);
 }
 
 
