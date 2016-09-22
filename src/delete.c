@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/05 11:27:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 17:49:13 by ggane            ###   ########.fr       */
+/*   Created: 2016/09/22 17:23:39 by ggane             #+#    #+#             */
+/*   Updated: 2016/09/22 17:45:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int		main(int ac, char **av)
+void	delete_content(void *to_delete, size_t size)
 {
-	t_info	*info_line;
-	t_list	*directories;
+	t_data	*data;
 
-	directories = NULL;
-	info_line = parse_prompt(ac, av);
-	directories = list_and_sort_directories(info_line);
-	directories = put_content_in_trees(directories);
-	erase_list(&directories);
-	return (0);
+	data = (t_data *)to_delete;
+	free(data->name);
+	free(data->pathname);
+	free(data);
+	data = NULL;
+	to_delete = NULL;
+	size = 0;
+}
+
+void	erase_list(t_list **directories)
+{
+	void	(*del)(void *, size_t);
+
+	del = &delete_content;
+	ft_lstdel(directories, del);
 }

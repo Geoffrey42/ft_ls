@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 14:22:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 17:41:30 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,25 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//delete.c
+
+void			delete_content(void *to_delete, size_t size);
+void			erase_list(t_list **directories);
 //recursive_flag.c
 
 void			create_new_dir_list(t_data *old_data, t_list **new_dir);
-void			reverse_recursive_infix(int flags, t_btree *root, t_list **new_dir);
-void			regular_recursive_infix(int flags, t_btree *root, t_list **new_dir);
-t_list			*choose_recursive_infix_traversal(t_list *list, t_list *new_dir);
-//t_list			*recursive_traversal_stage(t_list *directories);
+void			reverse_recursive_infix
+				(int flags, t_btree *root, t_list **new_dir);
+void			regular_recursive_infix
+				(int flags, t_btree *root, t_list **new_dir);
+t_list			*choose_recursive_infix_traversal
+				(t_list *list, t_list *new_dir);
 void			recursive_traversal_stage(t_list *directories);
 //traversal_stage.c
 
 void			choose_infix_traversal(int flags, t_btree *tree,
 				void (*applyf)(void *));
 void			display_content(void *item);
-//t_list			*traversal_stage(t_list *directories);
 void			traversal_stage(t_list *directories);
 void			display_dir_title(char *name);
 
