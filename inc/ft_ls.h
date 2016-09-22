@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 11:16:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 14:06:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef int		(*t_cmpf)(void *, void *);
 void			create_new_dir_list(t_data *old_data, t_list **new_dir);
 t_list			*reverse_recursive_infix(int flags, t_btree *root);
 void			regular_recursive_infix(int flags, t_btree *root, t_list **new_dir);
-t_list			*choose_recursive_infix_traversal(t_list *list);
+t_list			*choose_recursive_infix_traversal(t_list *list, t_list *new_dir);
 //t_list			*recursive_traversal_stage(t_list *directories);
 void			recursive_traversal_stage(t_list *directories);
 //traversal_stage.c

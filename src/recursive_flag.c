@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 11:21:59 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 14:08:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	create_new_dir_list(t_data *old_data, t_list **new_dir)
 	t_data	*new_data;
 
 	new_data = NULL;
-	if (old_data->error == 0)
+	if (ft_strcmp(old_data->name, ".") != 0 && ft_strcmp(old_data->name, "..") != 0 && old_data->error == 0)
 	{
 		new_data = initialize_data_dir_first_call(old_data->pathname, old_data->pathname, old_data->flags);
 		ft_lstadd(new_dir, ft_lstnew(new_data, sizeof(t_data)));
@@ -57,7 +57,7 @@ void	regular_recursive_infix(int flags, t_btree *root, t_list **new_dir)
 	}
 }
 
-t_list	*choose_recursive_infix_traversal(t_list *list)
+t_list	*choose_recursive_infix_traversal(t_list *list, t_list *new_dir)
 {
 	t_data	*data;
 
@@ -71,11 +71,11 @@ t_list	*choose_recursive_infix_traversal(t_list *list)
 	}
 	else
 	{
-		regular_recursive_infix(data->flags, data->file, &list);
+		regular_recursive_infix(data->flags, data->file, &new_dir);
 		ft_putendl("\n--regular_list :\n");
-		print_list(list);
+		print_list(new_dir);
 		ft_putendl("----------------");
-		return (list);
+		return (new_dir);
 	}
 }
 
@@ -89,7 +89,9 @@ void	recursive_traversal_stage(t_list *directories)
 	tmp = directories;
 	while (tmp)
 	{
-		new_dir = choose_recursive_infix_traversal(tmp);
+		new_dir = choose_recursive_infix_traversal(tmp, new_dir);
+		if (new_dir)
+			new_dir = put_content_in_trees(new_dir);
 		tmp = tmp->next;
 	}
 }

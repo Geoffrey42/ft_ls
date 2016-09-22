@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 11:08:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 14:03:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,13 @@ void		display_content(void *item)
 	t_data	*data;
 
 	data = (t_data *)item;
-	//ft_putendl(data->name);
-	if (data->error == 0)
+	if (data->error == 0 && data->name[0] != '.')
 	{
-		ft_putstr("* : ");
 		ft_putstr(data->name);
-		ft_putstr(" -- est un dossier");
+		ft_putendl(" -- est un dossier");
 	}
-	else
-		ft_putstr(data->name);
-	ft_putchar('\n');
+	else if (data->error != 0 && data->name[0] != '.')
+		ft_putendl(data->name);
 }
 
 /*t_list		*traversal_stage(t_list *directories)
@@ -75,6 +72,7 @@ void		traversal_stage(t_list *directories)
 
 void		display_dir_title(char *name)
 {
+	ft_putchar('\n');
 	ft_putstr(name);
 	ft_putendl(":");
 }
