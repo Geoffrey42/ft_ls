@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 17:41:30 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 19:01:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,21 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//display.c
+
+void			display_content(void *item);
+
+//main_functions.c
+
+t_info			*parse_prompt(int ac, char **av);
+t_list			*list_and_sort_directories(t_info *info_line);
+t_list			*put_content_in_trees(t_list *directories);
+
 //delete.c
 
 void			delete_content(void *to_delete, size_t size);
 void			erase_list(t_list **directories);
+
 //recursive_flag.c
 
 void			create_new_dir_list(t_data *old_data, t_list **new_dir);
@@ -60,11 +71,11 @@ void			regular_recursive_infix
 t_list			*choose_recursive_infix_traversal
 				(t_list *list, t_list *new_dir);
 void			recursive_traversal_stage(t_list *directories);
+
 //traversal_stage.c
 
 void			choose_infix_traversal(int flags, t_btree *tree,
 				void (*applyf)(void *));
-void			display_content(void *item);
 void			traversal_stage(t_list *directories);
 void			display_dir_title(char *name);
 
@@ -77,16 +88,17 @@ t_btree			*insert_content(t_list *directories,
 				int (*cmpf)(void *, void *));
 t_list			*open_directory(t_list *directories);
 t_list			*insertion_stage(t_list *directories);
-t_list			*put_content_in_trees(t_list *directories);
+//compare_tree_data.c
+
+int				cb_timecmp_tree(void *item1, void *item2);
+int				cb_strcmp_tree(void *item1, void *item2);
+int				check_nanoseconds_tree(void *item1, void *item2);
 
 //compare_list_data.c
 
 int				choose_compare_list_function(t_list *item1, t_list *item2);
 int				check_nanoseconds(char *str1, char *str2);
 int				cb_timecmp_list(char *str1, char *str2);
-int				cb_timecmp_tree(void *item1, void *item2);
-int				cb_strcmp_tree(void *item1, void *item2);
-int				check_nanoseconds_tree(void *item1, void *item2);
 
 //create_data_dir.c
 
@@ -109,7 +121,6 @@ t_list			*insert_several_directories(t_info *info_line);
 t_list			*check_and_insert_data
 				(t_list *directories, char *name, int flags);
 t_list			*create_directories_list(t_info *info_line);
-t_list			*list_and_sort_directories(t_info *info_line);
 
 //parser_flags.c
 
@@ -123,23 +134,26 @@ void			check_dir_position(t_info *info_line);
 void			check_nb_directories(t_info *info_line);
 void			parse_directories(t_info *info_line);
 
-//parser.c
+//info_line.c
 
 char			**copy_av(int ac, char **av);
 t_info			*initialize_info_line(int ac, char **av);
-t_info			*parse_prompt(int ac, char **av);
 
 //display_errors.c
 
 void			display_flag_error_msg(char bad_option);
 
-//test_functions.c
+//test_functions_2.c
+
+void			switcher(int *switcher, int flags);
+void			print_flags(int flags);
+
+//test_functions_1.c
 
 void			display_data(t_list *list);
 void			print_list(t_list *list);
-void			print_flags(int flags);
-void			cb_ft_putendl(void *item);
 void			display_content_tree(t_data *content);
 void			display_trees(t_list *list);
+void			cb_ft_putendl(void *item);
 
 #endif

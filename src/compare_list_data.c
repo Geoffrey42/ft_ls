@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 15:09:59 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/20 16:57:37 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 18:41:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,55 +62,5 @@ int		cb_timecmp_list(char *str1, char *str2)
 		return (-1);
 	else if (str_stat1.st_mtime == str_stat2.st_mtime)
 		return (check_nanoseconds(str1, str2));
-	return (0);
-}
-
-int		cb_timecmp_tree(void *item1, void *item2)
-{
-	struct stat		item_stat1;
-	struct stat		item_stat2;
-	t_data	*tmp1;
-	t_data	*tmp2;
-
-	tmp1 = (t_data *)item1;
-	tmp2 = (t_data *)item2;
-	lstat(tmp1->pathname, &item_stat1);
-	lstat(tmp2->pathname, &item_stat2);
-	if (item_stat1.st_mtime < item_stat2.st_mtime)
-		return (1);
-	else if (item_stat1.st_mtime > item_stat2.st_mtime)
-		return (-1);
-	else if (item_stat1.st_mtime == item_stat2.st_mtime)
-		return (check_nanoseconds_tree(item1, item2));
-	return (0);
-}
-
-int		cb_strcmp_tree(void *item1, void *item2)
-{
-	t_data	*tmp1;
-	t_data	*tmp2;
-
-	tmp1 = (t_data *)item1;
-	tmp2 = (t_data *)item2;
-	return (ft_strcmp(tmp1->pathname, tmp2->pathname));
-}
-
-int		check_nanoseconds_tree(void *item1, void *item2)
-{
-	struct stat		item_stat1;
-	struct stat		item_stat2;
-	t_data			*tmp1;
-	t_data			*tmp2;
-
-	tmp1 = (t_data *)item1;
-	tmp2 = (t_data *)item2;
-	lstat(tmp1->pathname, &item_stat1);
-	lstat(tmp2->pathname, &item_stat2);
-	if (item_stat1.st_mtimespec.tv_nsec < item_stat2.st_mtimespec.tv_nsec)
-		return (1);
-	else if (item_stat1.st_mtimespec.tv_nsec > item_stat2.st_mtimespec.tv_nsec)
-		return (-1);
-	else if (item_stat1.st_mtimespec.tv_nsec == item_stat2.st_mtimespec.tv_nsec)
-		return (cb_strcmp_tree(item1, item2));
 	return (0);
 }

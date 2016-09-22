@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 14:04:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/14 16:24:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/22 18:42:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	merge_sort(t_list **source)
 
 	head = *source;
 	a = NULL;
-	b= NULL;
-
+	b = NULL;
 	if (head == NULL || head->next == NULL)
 		return ;
 	partition(head, &a, &b);
