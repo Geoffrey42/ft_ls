@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 18:11:10 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 18:18:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void		display_only_directories(t_list *directories)
 	if (content->error != 20)
 	{
 		display_dir_title(content);
+		display_total_size(content);
 		choose_infix_traversal(content->flags, content->file, applyf);
 	}
 }

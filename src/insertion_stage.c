@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:05:16 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 19:45:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_btree	*insert_content(t_list *directories, int (*cmpf)(void *, void *))
 		return (NULL);
 	while ((file = readdir(dirp)))
 		content = insert_data_in_tree(data, content, file->d_name, cmpf);
+	closedir(dirp);
 	return (content);
 }
 

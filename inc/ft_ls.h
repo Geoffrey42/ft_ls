@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 16:47:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 20:27:18 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,16 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
-//long_format_flag_1.c
+//long_format_flag_3.c
 
+void			display_size(struct stat file_stat);
+void			print_total_size(size_t size);
+size_t			sum_file_sizes(t_data *directory, struct dirent *file);
+void			display_total_size(t_data *directory);
+
+//long_format_flag_2.c
+
+void			display_total_size(t_data *directory);
 void			display_type_file(struct stat file_stat);
 void			display_rights(struct stat file_stat);
 void			display_links(struct stat file_stat);

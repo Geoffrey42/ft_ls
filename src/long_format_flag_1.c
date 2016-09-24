@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:09:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 20:17:01 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,6 @@ void		display_file_mode(struct stat file_stat)
 	display_type_file(file_stat);
 	display_rights(file_stat);
 	ft_putstr("  ");
-}
-
-void		display_size(struct stat file_stat)
-{
-	ft_putnbr(file_stat.st_size);
-	ft_putchar(' ');
 }
 
 char	*keep_necessary_timedata(char *long_time)
