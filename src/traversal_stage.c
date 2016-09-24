@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 16:58:12 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 18:11:10 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_list		*files_list(t_list *files)
 	{
 		content = (t_data *)files->content;
 		if (content->error == 20)
-			ft_putendl(content->name);
+			display_content(content);
 		files = files->next;
 	}
 	return (files);
