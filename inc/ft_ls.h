@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 11:52:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 11:57:31 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,13 @@ typedef struct	s_data
 }				t_data;
 
 typedef int		(*t_cmpf)(void *, void *);
+
+//long_format_flag_1.c
+
+void			display_tyep_file(struct stat file_stat);
+void			display_rights(struct stat file_stat);
+void			display_links(struct stat file_stat);
+void			display_id(struct stat file_stat);
 
 //long_format_flag_1.c
 
