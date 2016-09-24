@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:22:30 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:22:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 12:16:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,5 @@ t_list	*create_directories_list(t_info *info_line)
 		directories = insert_several_directories(info_line);
 	else
 		directories = insert_current_directory(info_line->flags);
-	return (directories);
-}
-
-t_list	*list_and_sort_directories(t_info *info_line)
-{
-	t_list	*directories;
-
-	directories = create_directories_list(info_line);
-	merge_sort(&directories);
 	return (directories);
 }

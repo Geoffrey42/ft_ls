@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 11:57:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 12:18:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef int		(*t_cmpf)(void *, void *);
 
 //long_format_flag_1.c
 
-void			display_tyep_file(struct stat file_stat);
+void			display_type_file(struct stat file_stat);
 void			display_rights(struct stat file_stat);
 void			display_links(struct stat file_stat);
 void			display_id(struct stat file_stat);
@@ -65,8 +65,10 @@ void			display_size(struct stat file_stat);
 char			*keep_necessary_timedata(char *long_time);
 void			display_date(struct stat file_stat);
 void			display_long_format(t_data *data);
+
 //display.c
 
+void			display_dir_title(char *name);
 void			display_short_format(t_data *data);
 void			choose_format_to_display(t_data *data);
 void			display_content(void *item);
@@ -109,6 +111,7 @@ t_btree			*insert_content(t_list *directories,
 				int (*cmpf)(void *, void *));
 t_list			*open_directory(t_list *directories);
 t_list			*insertion_stage(t_list *directories);
+
 //compare_tree_data.c
 
 int				cb_timecmp_tree(void *item1, void *item2);
@@ -135,7 +138,7 @@ t_list			*merge_lists(t_list *a, t_list *b);
 void			partition(t_list *head, t_list **front, t_list **back);
 void			merge_sort(t_list **source);
 
-//list_directories.c
+//create_directories_list.c
 
 t_list			*insert_current_directory(int flags);
 t_list			*insert_several_directories(t_info *info_line);

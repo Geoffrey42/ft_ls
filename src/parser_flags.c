@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/11 17:07:09 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 12:47:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	parse_flags(t_info *info_line)
 	int		i;
 
 	i = 0;
-	if (info_line->ac <= 1)
+	if (info_line->ac < 1)
 		return ;
-	while (i < info_line->ac - 1 && ft_strcmp(info_line->av[i], "--"))
+	while (i <= info_line->ac - 1 && ft_strcmp(info_line->av[i], "--"))
 		check_authorized_flags(info_line, info_line->av[i++]);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:22:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:23:31 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 12:13:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,5 @@ t_info	*initialize_info_line(int ac, char **av)
 	info_line->flags = 0;
 	info_line->nb_dir = 0;
 	info_line->dir_pos = -1;
-	return (info_line);
-}
-
-t_info	*parse_prompt(int ac, char **av)
-{
-	t_info	*info_line;
-
-	info_line = initialize_info_line(ac, av);
-	parse_flags(info_line);
-	parse_directories(info_line);
 	return (info_line);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 11:54:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 12:09:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void		display_long_format(t_data *data)
 {
 	struct stat		file_stat;
 
-	if (lstat(file, &file_stat) < 0)
+	if (lstat(data->pathname, &file_stat) < 0)
 		return ;
 	display_file_mode(file_stat);
 	display_links(file_stat);
 	display_id(file_stat);
 	display_size(file_stat);
 	display_date(file_stat);
-	display_short_format(file);
+	display_short_format(data);
 }
