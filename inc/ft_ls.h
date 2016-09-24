@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 20:59:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 23:19:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void			recursive_traversal_stage(t_list *directories);
 
 //traversal_stage.c
 
-t_list			*files_list(t_list *files);
+void			files_list(t_list *files);
 void			display_only_directories(t_list *directories);
 t_list			*directories_list(t_list *directories);
 void			choose_infix_traversal(int flags, t_btree *tree,
@@ -170,6 +170,10 @@ t_data			*initialize_info_line(int ac, char **av);
 
 //display_errors.c
 
+void			zero_flags(t_list *error);
+void			display_error_list(t_list *error);
+void			display_unknow_error_msg(char *file);
+void			display_unknow_files(t_list *files);
 void			display_flag_error_msg(char bad_option);
 
 //test_functions_2.c

@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 18:18:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 23:25:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_list		*files_list(t_list *files)
+void		files_list(t_list *files)
 {
 	t_data	*content;
 
@@ -23,7 +23,6 @@ t_list		*files_list(t_list *files)
 			display_content(content);
 		files = files->next;
 	}
-	return (files);
 }
 
 void		display_only_directories(t_list *directories)
@@ -33,10 +32,11 @@ void		display_only_directories(t_list *directories)
 
 	applyf = &display_content;
 	content = (t_data *)directories->content;
-	if (content->error != 20)
+	if (content->error != 20 && content->error != 2)
 	{
 		display_dir_title(content);
-		display_total_size(content);
+		if ((content->flags & LOW_L_FLAG) != 0)
+			display_total_size(content);
 		choose_infix_traversal(content->flags, content->file, applyf);
 	}
 }
@@ -69,6 +69,7 @@ void		traversal_stage(t_list *directories)
 	t_list	*files;
 
 	files = directories;
+	//display_unknow_files(files);
 	files_list(files);
 	directories_list(directories);
 }
