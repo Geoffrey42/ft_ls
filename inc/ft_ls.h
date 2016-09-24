@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 19:07:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 11:52:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <dirent.h>
 # include <errno.h>
 # include <sys/stat.h>
+# include <sys/types.h>
+# include <pwd.h>
+# include <uuid/uuid.h>
+# include <grp.h>
+# include <time.h>
 # include "../libft/libft.h"
 
 # define LOW_A_FLAG 1
@@ -46,8 +51,17 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//long_format_flag_1.c
+
+void			display_file_mode(struct stat file_stat);
+void			display_size(struct stat file_stat);
+char			*keep_necessary_timedata(char *long_time);
+void			display_date(struct stat file_stat);
+void			display_long_format(t_data *data);
 //display.c
 
+void			display_short_format(t_data *data);
+void			choose_format_to_display(t_data *data);
 void			display_content(void *item);
 
 //main_functions.c
