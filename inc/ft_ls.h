@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:04:08 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:11:41 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,6 @@
 # define LOW_R_FLAG 8
 # define UPP_R_FLAG 16
 
-typedef struct	s_info
-{
-	char		**av;
-	int			ac;
-	int			flags;
-	int			nb_dir;
-	int			dir_pos;
-}				t_info;
-
 typedef struct	s_data
 {
 	char		**av;
@@ -51,16 +42,6 @@ typedef struct	s_data
 	int			error;
 	t_btree		*file;
 }				t_data;
-
-/*typedef struct	s_data
-{
-	char		*name;
-	char		*pathname;
-	int			error;
-	int			flags;
-	int			is_dir;
-	t_btree		*file;
-}				t_data;*/
 
 typedef int		(*t_cmpf)(void *, void *);
 
