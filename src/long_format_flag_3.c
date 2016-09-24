@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 20:16:15 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 20:29:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 20:59:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t		sum_file_sizes(t_data *directory, struct dirent *file)
 	size = 0;
 	file_pathname = create_pathname(directory->pathname, file->d_name);
 	lstat(file_pathname, &file_stat);
-	size = file_stat.st_size;
+	size = file_stat.st_blocks;
 	return (size);
 }
 
