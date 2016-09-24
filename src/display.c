@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 16:58:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 17:04:19 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,15 @@
 
 void		display_new_line(t_list *list)
 {
+	t_data	*content;
+
+	content = NULL;
 	if (list->next)
-		ft_putchar('\n');
+	{
+		content = (t_data *)list->next->content;
+		if (content->error == 0)
+			ft_putchar('\n');
+	}
 }
 
 void		display_dir_title(t_data *content)
