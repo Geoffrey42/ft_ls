@@ -6,16 +6,25 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:23:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 16:58:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void		display_dir_title(char *name)
+void		display_new_line(t_list *list)
 {
-	ft_putstr(name);
-	ft_putendl(":");
+	if (list->next)
+		ft_putchar('\n');
+}
+
+void		display_dir_title(t_data *content)
+{
+	if (content->nb_dir > 1)
+	{
+		ft_putstr(content->pathname);
+		ft_putendl(":");
+	}
 }
 
 void		display_short_format(t_data *data)

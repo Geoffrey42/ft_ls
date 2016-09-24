@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:16:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 16:47:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			display_long_format(t_data *data);
 
 //display.c
 
-void			display_dir_title(char *name);
+void			display_new_line(t_list *list);
+void			display_dir_title(t_data *content);
 void			display_short_format(t_data *data);
 void			choose_format_to_display(t_data *data);
 void			display_content(void *item);
@@ -91,10 +92,12 @@ void			recursive_traversal_stage(t_list *directories);
 
 //traversal_stage.c
 
+t_list			*files_list(t_list *files);
+void			display_only_directories(t_list *directories);
+t_list			*directories_list(t_list *directories);
 void			choose_infix_traversal(int flags, t_btree *tree,
 				void (*applyf)(void *));
 void			traversal_stage(t_list *directories);
-void			display_dir_title(char *name);
 
 //insertion_stage.c
 

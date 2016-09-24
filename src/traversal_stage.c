@@ -6,11 +6,53 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:26:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 16:58:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+t_list		*files_list(t_list *files)
+{
+	t_data	*content;
+
+	while (files)
+	{
+		content = (t_data *)files->content;
+		if (content->error == 20)
+			ft_putendl(content->name);
+		files = files->next;
+	}
+	return (files);
+}
+
+void		display_only_directories(t_list *directories)
+{
+	t_data	*content;
+	void	(*applyf)(void *);
+
+	applyf = &display_content;
+	content = (t_data *)directories->content;
+	if (content->error != 20)
+	{
+		display_dir_title(content);
+		choose_infix_traversal(content->flags, content->file, applyf);
+	}
+}
+
+t_list		*directories_list(t_list *directories)
+{
+	t_list	*tmp;
+
+	tmp = directories;
+	while (tmp)
+	{
+		display_only_directories(tmp);
+		display_new_line(tmp);
+		tmp = tmp->next;
+	}
+	return (tmp);
+}
 
 void		choose_infix_traversal(
 			int flags, t_btree *tree, void (*applyf)(void *))
@@ -23,20 +65,9 @@ void		choose_infix_traversal(
 
 void		traversal_stage(t_list *directories)
 {
-	t_data	*tmp;
-	t_list	*tmp_list;
-	void	(*applyf)(void *);
+	t_list	*files;
 
-	applyf = &display_content;
-	tmp_list = directories;
-	while (tmp_list)
-	{
-		tmp = (t_data *)tmp_list->content;
-		if (tmp->nb_dir > 1)
-			display_dir_title(tmp->name);
-		choose_infix_traversal(tmp->flags, tmp->file, applyf);
-		if (tmp_list->next)
-			ft_putchar('\n');
-		tmp_list = tmp_list->next;
-	}
+	files = directories;
+	files_list(files);
+	directories_list(directories);
 }

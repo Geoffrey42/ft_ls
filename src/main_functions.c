@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:28:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 13:45:27 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 15:31:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_list	*put_content_in_trees(t_list *directories)
 		traversal_stage(directories);
 	else
 	{
-		display_dir_title(data->pathname);
+		display_dir_title(data);
 		recursive_traversal_stage(directories);
 	}
 	return (directories);
