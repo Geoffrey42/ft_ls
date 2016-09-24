@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:17:59 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:23:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void		display_dir_title(char *name)
 {
-	ft_putchar('\n');
 	ft_putstr(name);
 	ft_putendl(":");
 }

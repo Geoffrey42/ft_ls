@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:11:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:16:50 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int				check_nanoseconds_tree(void *item1, void *item2);
 //compare_list_data.c
 
 int				choose_compare_list_function(t_list *item1, t_list *item2);
-int				check_nanoseconds(char *str1, char *str2);
+int				check_nanoseconds_list(char *str1, char *str2);
 int				cb_timecmp_list(char *str1, char *str2);
 
 //create_data_dir.c
