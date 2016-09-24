@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:44:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:05:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_btree	*insert_data_in_tree(t_data *data,
 {
 	t_data	*content_data;
 
-	content_data = initialize_data_dir(file_name, data->pathname, data->flags);
+	content_data = initialize_data_dir(file_name, data->pathname, data);
 	btree_insert_data(&content, (void *)content_data, cmpf);
 	return (content);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:52:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:05:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	create_new_dir_list(t_data *old_data, t_list **new_dir)
 		&& ft_strcmp(old_data->name, "..") != 0 && old_data->error == 0)
 	{
 		new_data = initialize_data_dir_first_call(old_data->pathname,
-		old_data->pathname, old_data->flags);
+		old_data->pathname, old_data);
 		ft_lstadd(new_dir, ft_lstnew(new_data, sizeof(t_data)));
 	}
 }

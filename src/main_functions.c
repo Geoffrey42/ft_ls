@@ -6,15 +6,15 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:28:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:33:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 13:45:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-t_info	*parse_prompt(int ac, char **av)
+t_data	*parse_prompt(int ac, char **av)
 {
-	t_info	*info_line;
+	t_data	*info_line;
 
 	info_line = initialize_info_line(ac, av);
 	parse_flags(info_line);
@@ -22,7 +22,7 @@ t_info	*parse_prompt(int ac, char **av)
 	return (info_line);
 }
 
-t_list	*list_and_sort_directories(t_info *info_line)
+t_list	*list_and_sort_directories(t_data *info_line)
 {
 	t_list	*directories;
 

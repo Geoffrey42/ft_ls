@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:27:39 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 17:49:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 13:36:45 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(int ac, char **av)
 {
-	t_info	*info_line;
+	t_data	*info_line;
 	t_list	*directories;
 
 	directories = NULL;

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:53:12 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 19:02:41 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:06:16 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ void	display_data(t_list *list)
 	ft_putendl(tmp->pathname);
 	ft_putstr("error : ");
 	ft_putnbr(tmp->error);
-	ft_putchar('\n');
-	ft_putstr("is_dir : ");
-	ft_putnbr(tmp->is_dir);
 	ft_putchar('\n');
 	print_flags(tmp->flags);
 	ft_putendl("------");

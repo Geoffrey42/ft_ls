@@ -6,13 +6,13 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:47:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 13:41:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	check_binary_mask(t_info *info_line, char *to_check, int j)
+void	check_binary_mask(t_data *info_line, char *to_check, int j)
 {
 	if (to_check[0] == '-')
 	{
@@ -34,7 +34,7 @@ void	check_binary_mask(t_info *info_line, char *to_check, int j)
 	}
 }
 
-void	check_authorized_flags(t_info *info_line, char *to_check)
+void	check_authorized_flags(t_data *info_line, char *to_check)
 {
 	int		j;
 
@@ -43,7 +43,7 @@ void	check_authorized_flags(t_info *info_line, char *to_check)
 		check_binary_mask(info_line, to_check, j++);
 }
 
-void	parse_flags(t_info *info_line)
+void	parse_flags(t_data *info_line)
 {
 	int		i;
 

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:22:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:13:38 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:01:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ char	**copy_av(int ac, char **av)
 	return (copy);
 }
 
-t_info	*initialize_info_line(int ac, char **av)
+t_data	*initialize_info_line(int ac, char **av)
 {
-	t_info	*info_line;
+	t_data	*info_line;
 
 	info_line = NULL;
-	if (!(info_line = (t_info *)malloc(sizeof(t_info))))
+	if (!(info_line = (t_data *)malloc(sizeof(t_data))))
 		return (NULL);
 	info_line->av = copy_av(ac, av);
 	info_line->ac = ac - 1;

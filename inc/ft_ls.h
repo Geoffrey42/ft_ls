@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:18:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/24 14:04:08 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,26 @@ typedef struct	s_info
 
 typedef struct	s_data
 {
+	char		**av;
+	int			ac;
+	int			flags;
+	int			nb_dir;
+	int			dir_pos;
+	char		*name;
+	char		*pathname;
+	int			error;
+	t_btree		*file;
+}				t_data;
+
+/*typedef struct	s_data
+{
 	char		*name;
 	char		*pathname;
 	int			error;
 	int			flags;
 	int			is_dir;
 	t_btree		*file;
-}				t_data;
+}				t_data;*/
 
 typedef int		(*t_cmpf)(void *, void *);
 
@@ -75,8 +88,8 @@ void			display_content(void *item);
 
 //main_functions.c
 
-t_info			*parse_prompt(int ac, char **av);
-t_list			*list_and_sort_directories(t_info *info_line);
+t_data			*parse_prompt(int ac, char **av);
+t_list			*list_and_sort_directories(t_data *info_line);
 t_list			*put_content_in_trees(t_list *directories);
 
 //delete.c
@@ -128,9 +141,9 @@ int				cb_timecmp_list(char *str1, char *str2);
 
 int				check_if_error_dir(char *name);
 char			*create_pathname(char *parent, char *son);
-t_data			*initialize_data_dir(char *name, char *parent, int flags);
+t_data			*initialize_data_dir(char *name, char *parent, t_data *info);
 t_data			*initialize_data_dir_first_call
-				(char *name, char *parent, int flags);
+				(char *name, char *parent, t_data *info);
 
 //merge_sort.c
 
@@ -140,28 +153,28 @@ void			merge_sort(t_list **source);
 
 //create_directories_list.c
 
-t_list			*insert_current_directory(int flags);
-t_list			*insert_several_directories(t_info *info_line);
-t_list			*check_and_insert_data
-				(t_list *directories, char *name, int flags);
-t_list			*create_directories_list(t_info *info_line);
+t_list			*insert_current_directory(t_data *info_line);
+t_list			*insert_several_directories(t_data *info_line);
+t_list			*insert_data_in_list
+				(t_list *directories, char *name, t_data *info_line);
+t_list			*create_directories_list(t_data *info_line);
 
 //parser_flags.c
 
-void			check_binary_mask(t_info *info_line, char *to_check, int j);
-void			check_authorized_flags(t_info *info_line, char *to_check);
-void			parse_flags(t_info *info_line);
+void			check_binary_mask(t_data *info_line, char *to_check, int j);
+void			check_authorized_flags(t_data *info_line, char *to_check);
+void			parse_flags(t_data *info_line);
 
 //parser_directories.c
 
-void			check_dir_position(t_info *info_line);
-void			check_nb_directories(t_info *info_line);
-void			parse_directories(t_info *info_line);
+void			check_dir_position(t_data *info_line);
+void			check_nb_directories(t_data *info_line);
+void			parse_directories(t_data *info_line);
 
 //info_line.c
 
 char			**copy_av(int ac, char **av);
-t_info			*initialize_info_line(int ac, char **av);
+t_data			*initialize_info_line(int ac, char **av);
 
 //display_errors.c
 
