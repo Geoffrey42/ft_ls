@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 14:11:02 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 15:35:39 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,16 @@ void	recursive_traversal_stage(t_list *directories)
 {
 	t_list	*new_dir;
 	t_list	*tmp;
+	t_data	*content;
 
 	new_dir = NULL;
+	content = NULL;
 	tmp = directories;
 	while (tmp)
 	{
+		content = (t_data *)tmp->content;
+		content->nb_dir = 2;
+		display_dir_title(content);
 		new_dir = choose_recursive_infix_traversal(tmp, new_dir);
 		if (new_dir)
 		{
@@ -85,6 +90,8 @@ void	recursive_traversal_stage(t_list *directories)
 			free(new_dir);
 			new_dir = NULL;
 		}
+		if (tmp->next)
+			ft_putchar('\n');
 		tmp = tmp->next;
 	}
 }
