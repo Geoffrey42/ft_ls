@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 20:24:26 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 21:20:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*create_pathname(char *parent, char *son)
 	return (son);
 }
 
-t_data	*init_rec_data(char *name, char *parent, t_list *list)
+/*t_data	*init_rec_data(char *name, char *parent, t_list *list)
 {
 	t_data	*data_dir;
 	t_data	*info;
@@ -48,7 +48,7 @@ t_data	*init_rec_data(char *name, char *parent, t_list *list)
 	data_dir->nb_dir = recall_sub_dir_number(list);
 	data_dir->nb_sub_dir = recall_sub_dir_number(list);
 	return (data_dir);
-}
+}*/
 
 t_data	*initialize_data_dir(char *name, char *parent, t_data *info)
 {
@@ -62,6 +62,7 @@ t_data	*initialize_data_dir(char *name, char *parent, t_data *info)
 	data_dir->error = check_if_error_dir(data_dir->pathname);
 	data_dir->flags = info->flags;
 	data_dir->nb_dir = info->nb_dir;
+	data_dir->first_call = info->first_call;
 	return (data_dir);
 }
 
@@ -78,5 +79,6 @@ t_data	*initialize_data_dir_first_call(char *name, char *parent, t_data *info)
 	data_dir->error = check_if_error_dir(data_dir->pathname);
 	data_dir->flags = info->flags;
 	data_dir->nb_dir = info->nb_dir;
+	data_dir->first_call = info->first_call;
 	return (data_dir);
 }

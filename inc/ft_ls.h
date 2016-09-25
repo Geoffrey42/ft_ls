@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 20:44:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 21:15:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_data
 	char		*name;
 	char		*pathname;
 	int			error;
+	int			first_call;
 	t_btree		*file;
 }				t_data;
 

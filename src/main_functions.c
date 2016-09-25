@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:28:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 19:16:57 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 21:15:05 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_list	*list_and_sort_directories(t_data *info_line)
 
 t_list	*put_content_in_trees(t_list *directories)
 {
-	t_data	*data;
+	t_data			*data;
 
 	data = (t_data *)directories->content;
 	directories = insertion_stage(directories);
