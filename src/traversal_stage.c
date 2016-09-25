@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 10:31:55 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 11:13:27 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,21 @@
 void		files_list(t_list *files)
 {
 	t_data	*content;
+	int		stop;
 
+	stop = 0;
 	while (files)
 	{
 		content = (t_data *)files->content;
 		if (content->error == 20)
+		{
 			display_content(content);
+			stop = 1;
+		}
 		files = files->next;
 	}
+	if ((content->flags & LOW_R_FLAG) && stop != 0)
+		ft_putchar('\n');
 }
 
 void		display_only_directories(t_list *directories)
@@ -32,7 +39,9 @@ void		display_only_directories(t_list *directories)
 
 	applyf = &display_content;
 	content = (t_data *)directories->content;
-	if (content->error != 20 && content->error != 2)
+	if (content->error == 13)
+		display_permission_denied(content);
+	else if (content->error != 20 && content->error != 2)
 	{
 		display_dir_title(content);
 		if ((content->flags & LOW_L_FLAG) != 0)

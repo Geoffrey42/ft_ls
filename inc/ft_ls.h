@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 23:19:39 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 11:09:22 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,12 +168,16 @@ void			parse_directories(t_data *info_line);
 char			**copy_av(int ac, char **av);
 t_data			*initialize_info_line(int ac, char **av);
 
-//display_errors.c
+//errors_traversal.c
 
 void			zero_flags(t_list *error);
 void			display_error_list(t_list *error);
-void			display_unknow_error_msg(char *file);
 void			display_unknow_files(t_list *files);
+
+//display_errors.c
+
+void			display_permission_denied(t_data *content);
+void			display_unknow_error_msg(char *file);
 void			display_flag_error_msg(char bad_option);
 
 //test_functions_2.c

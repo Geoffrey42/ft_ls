@@ -6,37 +6,19 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 20:05:21 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 10:32:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 11:07:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-void	zero_flags(t_list *error)
+void	display_permission_denied(t_data *content)
 {
-	t_data	*content;
-	t_list	*tmp;
-
-	tmp = error;
-	while (tmp)
-	{
-		content = (t_data *)tmp->content;
-		content->flags = 0;
-		tmp = tmp->next;
-	}
-}
-
-void	display_error_list(t_list *error)
-{
-	t_data	*content;
-
-	content = NULL;
-	while (error)
-	{
-		content = (t_data *)error->content;
-		display_unknow_error_msg(content->name);
-		error = error->next;
-	}
+	ft_putchar('\n');
+	display_dir_title(content);
+	ft_putstr_fd("ls: ", 2);
+	ft_putstr_fd(content->name, 2);
+	ft_putendl_fd(": Permission denied", 2);
 }
 
 void	display_unknow_error_msg(char *file)
@@ -44,28 +26,6 @@ void	display_unknow_error_msg(char *file)
 	ft_putstr_fd("ls: ", 2);
 	ft_putstr_fd(file, 2);
 	ft_putendl_fd(": No such file or directory", 2);
-}
-
-void	display_unknow_files(t_list *files)
-{
-	t_data	*content;
-	t_list	*error;
-
-	error = NULL;
-	content = NULL;
-	if (files)
-	{
-		while (files)
-		{
-			content = (t_data *)files->content;
-			if (content->error == 2)
-				ft_lstadd(&error, ft_lstnew(content, sizeof(t_data)));
-			files = files->next;
-		}
-		zero_flags(error);
-		merge_sort(&error);
-		display_error_list(error);
-	}
 }
 
 void	display_flag_error_msg(char bad_option)
