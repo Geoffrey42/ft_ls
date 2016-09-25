@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 11:13:27 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 11:31:15 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void		files_list(t_list *files)
 	t_data	*content;
 	int		stop;
 
-	stop = 0;
 	while (files)
 	{
 		content = (t_data *)files->content;
@@ -28,7 +27,7 @@ void		files_list(t_list *files)
 		}
 		files = files->next;
 	}
-	if ((content->flags & LOW_R_FLAG) && stop != 0)
+	if ((content->flags) && stop != 0)
 		ft_putchar('\n');
 }
 
