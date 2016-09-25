@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 23:25:19 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 10:31:55 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		traversal_stage(t_list *directories)
 	t_list	*files;
 
 	files = directories;
-	//display_unknow_files(files);
+	display_unknow_files(files);
 	files_list(files);
 	directories_list(directories);
 }

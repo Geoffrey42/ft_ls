@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 20:05:21 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 23:24:06 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 10:32:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	zero_flags(t_list *error)
 	t_list	*tmp;
 
 	tmp = error;
-	content = (t_data *)tmp->content;
 	while (tmp)
 	{
+		content = (t_data *)tmp->content;
 		content->flags = 0;
 		tmp = tmp->next;
 	}
