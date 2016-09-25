@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 21:15:44 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 21:57:46 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void			erase_list(t_list **directories);
 
 //recursive_flag.c
 
+void			add_data_to_list(t_data *old_data, t_list **new_dir);
 void			create_new_dir_list(t_data *old_data, t_list **new_dir);
 void			reverse_recursive_infix
 				(int flags, t_btree *root, t_list **new_dir);

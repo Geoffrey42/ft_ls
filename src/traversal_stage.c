@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 20:43:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 22:27:28 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		recursive_call(t_list *recursive)
 	t_data	*content;
 
 	content = (t_data *)recursive->content;
-	if (content->flags & UPP_R_FLAG)
+	if ((content->flags & UPP_R_FLAG))
 	{
 		merge_sort(&recursive);
 		content->nb_sub_dir = recall_sub_dir_number(recursive);
