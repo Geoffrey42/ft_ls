@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:22:42 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:01:38 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 19:33:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_data	*initialize_info_line(int ac, char **av)
 	info_line->ac = ac - 1;
 	info_line->flags = 0;
 	info_line->nb_dir = 0;
+	info_line->nb_sub_dir = 0;
 	info_line->dir_pos = -1;
 	return (info_line);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 13:42:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 20:44:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_data
 	int			ac;
 	int			flags;
 	int			nb_dir;
+	int			nb_sub_dir;
 	int			dir_pos;
 	char		*name;
 	char		*pathname;
@@ -100,8 +101,10 @@ void			recursive_traversal_stage(t_list *directories);
 
 //traversal_stage.c
 
+int				recall_sub_dir_number(t_list *recursive);
+void			recursive_call(t_list *recursive);
 void			files_list(t_list *files);
-void			display_only_directories(t_list *directories);
+t_list			*display_only_directories(t_list *directories);
 t_list			*directories_list(t_list *directories);
 void			choose_infix_traversal(int flags, t_btree *tree,
 				void (*applyf)(void *));
@@ -133,6 +136,7 @@ int				cb_timecmp_list(char *str1, char *str2);
 
 int				check_if_error_dir(char *name);
 char			*create_pathname(char *parent, char *son);
+t_data			*init_rec_data(char *name, char *parent, t_list *list);
 t_data			*initialize_data_dir(char *name, char *parent, t_data *info);
 t_data			*initialize_data_dir_first_call
 				(char *name, char *parent, t_data *info);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:01:27 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/25 20:24:26 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,24 @@ char	*create_pathname(char *parent, char *son)
 	parent = ft_strjoin(parent, "/");
 	son = ft_strjoin(parent, son);
 	return (son);
+}
+
+t_data	*init_rec_data(char *name, char *parent, t_list *list)
+{
+	t_data	*data_dir;
+	t_data	*info;
+
+	data_dir = NULL;
+	info = (t_data *)list->content;
+	if (!(data_dir = (t_data *)malloc(sizeof(t_data))))
+		return (NULL);
+	data_dir->name = ft_strdup(name);
+	data_dir->pathname = create_pathname(parent, name);
+	data_dir->error = check_if_error_dir(data_dir->pathname);
+	data_dir->flags = info->flags;
+	data_dir->nb_dir = recall_sub_dir_number(list);
+	data_dir->nb_sub_dir = recall_sub_dir_number(list);
+	return (data_dir);
 }
 
 t_data	*initialize_data_dir(char *name, char *parent, t_data *info)
