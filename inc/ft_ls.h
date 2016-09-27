@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/27 17:20:59 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/27 17:25:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int				major_device(unsigned int dev);
 int				minor_device(int dev);
 void			display_major_minor(struct stat file_stat);
 
-//long_format_flag_3.c
+//display_size.c.c
 
 void			display_major_minor(struct stat file_stat);
 void			display_size(struct stat file_stat);
