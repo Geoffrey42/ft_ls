@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 21:57:46 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/27 17:20:59 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,15 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//device.c
+
+int				major_device(unsigned int dev);
+int				minor_device(int dev);
+void			display_major_minor(struct stat file_stat);
+
 //long_format_flag_3.c
 
+void			display_major_minor(struct stat file_stat);
 void			display_size(struct stat file_stat);
 void			print_total_size(size_t size);
 size_t			sum_file_sizes(t_data *directory, struct dirent *file);

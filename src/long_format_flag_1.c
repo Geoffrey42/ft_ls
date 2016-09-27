@@ -6,11 +6,18 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 20:17:01 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/27 15:40:48 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+int			check_special_file(struct stat file_stat)
+{
+	if ((S_ISCHR(file_stat.st_mode)) || S_ISBLK(file_stat.st_mode))
+		return (1);
+	return (0);
+}
 
 void		display_file_mode(struct stat file_stat)
 {
@@ -51,7 +58,10 @@ void		display_long_format(t_data *data)
 	display_file_mode(file_stat);
 	display_links(file_stat);
 	display_id(file_stat);
-	display_size(file_stat);
+	if (!check_special_file(file_stat))
+		display_size(file_stat);
+	else
+		display_major_minor(file_stat);
 	display_date(file_stat);
 	display_short_format(data);
 }

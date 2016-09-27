@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 22:22:16 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/27 08:28:42 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,32 +73,4 @@ t_list	*choose_recursive_infix_traversal(t_list *list, t_list *new_dir)
 	else
 		regular_recursive_infix(data->flags, data->file, &new_dir);
 	return (new_dir);
-}
-
-void	recursive_traversal_stage(t_list *directories)
-{
-	t_list	*new_dir;
-	t_list	*tmp;
-	t_data	*content;
-
-	new_dir = NULL;
-	content = NULL;
-	tmp = directories;
-	while (tmp)
-	{
-		content = (t_data *)tmp->content;
-		content->nb_dir = 2;
-		display_dir_title(content);
-		new_dir = choose_recursive_infix_traversal(tmp, new_dir);
-		if (new_dir)
-		{
-			merge_sort(&new_dir);
-			new_dir = put_content_in_trees(new_dir);
-			free(new_dir);
-			new_dir = NULL;
-		}
-		if (tmp->next)
-			ft_putchar('\n');
-		tmp = tmp->next;
-	}
 }
