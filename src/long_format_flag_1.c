@@ -6,11 +6,23 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 09:01:18 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 20:19:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+void		display_link(t_data *data)
+{
+	char	buf[256];
+	int		len;
+
+	ft_putstr(data->name);
+	ft_putstr(" -> ");
+	len = readlink(data->pathname, buf, sizeof(buf)); 
+	buf[len] = '\0';
+	ft_putendl(buf);
+}
 
 void		display_file_mode(struct stat file_stat)
 {
@@ -33,5 +45,8 @@ void		display_long_format(t_data *data)
 	else
 		display_major_minor(file_stat);
 	display_date(file_stat);
-	display_short_format(data);
+	if (!S_ISLNK(file_stat.st_mode))
+		display_short_format(data);
+	else
+		display_link(data);
 }

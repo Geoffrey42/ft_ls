@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 19:10:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 20:20:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void			display_id(struct stat file_stat);
 
 //long_format_flag_1.c
 
+void			display_link(t_data *data);
 void			display_file_mode(struct stat file_stat);
 void			display_long_format(t_data *data);
 
