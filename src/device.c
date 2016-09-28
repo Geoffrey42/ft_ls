@@ -6,11 +6,18 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 17:15:57 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/27 17:19:24 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 08:57:43 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+int			check_special_file(struct stat file_stat)
+{
+	if ((S_ISCHR(file_stat.st_mode)) || S_ISBLK(file_stat.st_mode))
+		return (1);
+	return (0);
+}
 
 int			major_device(unsigned int dev)
 {

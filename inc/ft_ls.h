@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/27 17:25:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 19:10:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,16 @@ typedef struct	s_data
 
 typedef int		(*t_cmpf)(void *, void *);
 
+//display_date.c
+
+char			*display_year(char *long_time);
+int				check_6_months(struct stat file_stat);
+char			*keep_necessary_timedata(char *long_time);
+void			display_date(struct stat file_stat);
+
 //device.c
 
+int				check_special_file(struct stat file_stat);
 int				major_device(unsigned int dev);
 int				minor_device(int dev);
 void			display_major_minor(struct stat file_stat);
@@ -63,7 +71,6 @@ void			display_total_size(t_data *directory);
 
 //long_format_flag_2.c
 
-void			display_total_size(t_data *directory);
 void			display_type_file(struct stat file_stat);
 void			display_rights(struct stat file_stat);
 void			display_links(struct stat file_stat);
@@ -72,9 +79,6 @@ void			display_id(struct stat file_stat);
 //long_format_flag_1.c
 
 void			display_file_mode(struct stat file_stat);
-void			display_size(struct stat file_stat);
-char			*keep_necessary_timedata(char *long_time);
-void			display_date(struct stat file_stat);
 void			display_long_format(t_data *data);
 
 //display.c
