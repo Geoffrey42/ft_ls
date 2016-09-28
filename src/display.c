@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 21:22:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 20:22:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ void		display_dir_title(t_data *content)
 {
 	if (content->nb_dir > 1 || content->nb_sub_dir > 0)
 	{
-		/*ft_putstr("nb_dir : ");
-		ft_putnbr(content->nb_dir);
-		ft_putstr(" - nb_sub_dir : ");
-		ft_putnbr(content->nb_sub_dir);
-		ft_putchar('\n');*/
 		if (content->flags & UPP_R_FLAG)
 			ft_putchar('\n');
 		ft_putstr(content->pathname);

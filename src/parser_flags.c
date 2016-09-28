@@ -6,17 +6,19 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 13:43:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 20:26:34 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
 
-int			check_flags_for_new_line(t_data *content)
+int		check_flags_for_new_line(t_data *content)
 {
-	if ((content->flags & LOW_R_FLAG) != 0 && (content->flags & LOW_T_FLAG) == 0)
+	if ((content->flags & LOW_R_FLAG) != 0
+		&& (content->flags & LOW_T_FLAG) == 0)
 		return (1);
-	if ((content->flags & LOW_R_FLAG) == 0 && (content->flags & LOW_T_FLAG) != 0)
+	if ((content->flags & LOW_R_FLAG) == 0
+		&& (content->flags & LOW_T_FLAG) != 0)
 		return (1);
 	return (0);
 }

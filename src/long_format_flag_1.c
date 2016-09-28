@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:19:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/28 20:31:13 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		display_link(t_data *data)
 
 	ft_putstr(data->name);
 	ft_putstr(" -> ");
-	len = readlink(data->pathname, buf, sizeof(buf)); 
+	len = readlink(data->pathname, buf, sizeof(buf));
 	buf[len] = '\0';
 	ft_putendl(buf);
 }
