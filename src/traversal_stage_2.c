@@ -6,11 +6,26 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 20:29:41 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 17:53:23 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 20:09:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+void		initialize_first_call(t_list *list)
+{
+	t_list	*tmp;
+	t_data	*content;
+
+	tmp = list;
+	content = NULL;
+	while (tmp)
+	{
+		content = (t_data *)tmp->content;
+		content->first_call = 1;
+		tmp = tmp->next;
+	}
+}
 
 int			recall_sub_dir_number(t_list *recursive)
 {

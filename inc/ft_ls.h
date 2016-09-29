@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 14:03:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 18:13:12 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void			recursive_traversal_stage(t_list *directories);
 
 //traversal_stage_2.c
 
+void			initialize_first_call(t_list *list);
 int				recall_sub_dir_number(t_list *recursive);
 void			recursive_call(t_list *recursive);
 

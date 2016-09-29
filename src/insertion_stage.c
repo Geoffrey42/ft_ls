@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 15:33:40 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 18:15:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,7 @@ t_list	*insertion_stage(t_list *directories)
 	t_data	*data;
 
 	data = (t_data *)directories->content;
-	//if (data->first_call)
-		data->nb_sub_dir = recall_sub_dir_number(directories);
-	//data->first_call = 1;
+	data->nb_sub_dir = recall_sub_dir_number(directories);
 	tmp = directories;
 	while (tmp)
 	{

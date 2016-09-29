@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 17:54:03 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 20:09:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,7 @@ void		files_list(t_list *files)
 		files = files->next;
 	}
 	if (check_flags_for_new_line(content) && stop != 0)
-	{
-		//ft_putstr("---");
 		ft_putchar('\n');
-		//ft_putendl("1\n---");
-	}
 }
 
 t_list		*display_only_directories(t_list *directories)
@@ -42,12 +38,6 @@ t_list		*display_only_directories(t_list *directories)
 
 	content = (t_data *)directories->content;
 	recursive = NULL;
-	/*if (!ft_strcmp(content->name, "src"))
-	{
-		ft_putstr("first_call : ");
-		ft_putnbr(content->first_call);
-		ft_putchar('\n');
-	}*/
 	if (content->error == 13)
 		display_permission_denied(content);
 	else if (content->error != 20 && content->error != 2)
@@ -58,21 +48,6 @@ t_list		*display_only_directories(t_list *directories)
 		recursive = choose_recursive_infix_traversal(directories, recursive);
 	}
 	return (recursive);
-}
-
-void		initialize_first_call(t_list *list)
-{
-	t_list	*tmp;
-	t_data	*content;
-
-	tmp = list;
-	content = NULL;
-	while (tmp)	
-	{
-		content = (t_data *)tmp->content;
-		content->first_call = 1;
-		tmp = tmp->next;
-	}
 }
 
 t_list		*directories_list(t_list *directories)
@@ -90,12 +65,10 @@ t_list		*directories_list(t_list *directories)
 		recursive = display_only_directories(tmp);
 		if (recursive)
 		{
+			ft_putchar('\n');
 			recursive_call(recursive);
 			initialize_first_call(tmp);
 		}
-		/*ft_putendl("----");
-		print_list(tmp);
-		ft_putendl("----");*/
 		display_new_line(tmp);
 		tmp = tmp->next;
 	}

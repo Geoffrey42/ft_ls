@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 21:36:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:31:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 18:38:02 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,17 @@ void	add_data_to_list(t_data *old_data, t_list **new_dir)
 
 void	create_new_dir_list(t_data *old_data, t_list **new_dir)
 {
+	struct stat		file_stat;
+
+	lstat(old_data->pathname, &file_stat);
 	if ((old_data->flags & LOW_A_FLAG) && old_data->error == 0
 	&& ft_strcmp(old_data->name, ".") != 0
-		&& ft_strcmp(old_data->name, "..") != 0)
+		&& ft_strcmp(old_data->name, "..") != 0
+			&& (S_ISLNK(file_stat.st_mode) == 0))
 		add_data_to_list(old_data, new_dir);
 	else if ((old_data->flags & LOW_A_FLAG) == 0
-			&& old_data->name[0] != '.' && old_data->error == 0)
+			&& old_data->name[0] != '.' && old_data->error == 0
+				&& S_ISLNK(file_stat.st_mode) == 0)
 		add_data_to_list(old_data, new_dir);
 }
 

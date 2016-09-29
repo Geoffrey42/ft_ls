@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 17:59:14 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 20:09:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,15 @@ void		display_new_line(t_list *list)
 	if (list->next)
 	{
 		content = (t_data *)list->next->content;
-		if ((content->flags & UPP_R_FLAG) == 0 && content->error == 0)
-		{
-			//ft_putstr("---");
+		if (content->error == 0)
 			ft_putchar('\n');
-			//ft_putendl("2\n---");
-		}
 	}
 }
 
 void		display_dir_title(t_data *content)
 {
-	/*ft_putstr("first_call : ");
-	ft_putnbr(content->first_call);
-	ft_putchar('\n');*/
-	//if (content->nb_dir > 1 || content->nb_sub_dir > 0)
-	//if (content->nb_dir > 1 && content->first_call == 1)
 	if (content->nb_dir > 1 || content->first_call == 1)
 	{
-		if (content->flags & UPP_R_FLAG && content->first_call != 1)
-			ft_putchar('\n');
 		ft_putstr(content->pathname);
 		ft_putendl(":");
 	}
@@ -51,7 +40,6 @@ void		display_dir_title(t_data *content)
 void		display_short_format(t_data *data)
 {
 	ft_putendl(data->name);
-	//ft_putendl("---\n3\n---");
 }
 
 void		choose_format_to_display(t_data *data)
