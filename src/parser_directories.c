@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 13:46:00 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 10:31:51 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	check_dir_position(t_data *info_line)
 	int		i;
 
 	i = 0;
-	while (info_line->av[i] && info_line->av[i][0] == '-')
+	while (info_line->av[i] && info_line->av[i][0] == '-'
+	&& ft_strcmp(info_line->av[i], "-"))
 		i++;
 	if (info_line->av[i])
 		info_line->dir_pos = i;
