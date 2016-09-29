@@ -6,11 +6,18 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:26:34 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 10:18:37 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+int		check_double_dash(t_data *info_line, int i)
+{
+	if (i <= info_line->ac - 1 && ft_strcmp(info_line->av[i], "--"))
+		return (1);
+	return (0);
+}
 
 int		check_flags_for_new_line(t_data *content)
 {
@@ -61,6 +68,6 @@ void	parse_flags(t_data *info_line)
 	i = 0;
 	if (info_line->ac < 1)
 		return ;
-	while (i <= info_line->ac - 1 && ft_strcmp(info_line->av[i], "--"))
+	while (check_double_dash(info_line, i))
 		check_authorized_flags(info_line, info_line->av[i++]);
 }

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:30:42 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 10:19:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ t_list			*create_directories_list(t_data *info_line);
 
 //parser_flags.c
 
+int				check_double_dash(t_data *info_line, int i);
 int				check_flags_for_new_line(t_data *content);
 void			check_binary_mask(t_data *info_line, char *to_check, int j);
 void			check_authorized_flags(t_data *info_line, char *to_check);
