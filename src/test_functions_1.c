@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:53:12 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 20:32:53 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 17:43:36 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	display_data(t_list *list)
 	ft_putstr("nb_dir : ");
 	ft_putnbr(tmp->nb_dir);
 	ft_putchar('\n');
-	ft_putstr("nb_sub_dir : ");
-	ft_putnbr(tmp->nb_sub_dir);
+	ft_putstr("first_call : ");
+	ft_putnbr(tmp->first_call);
 	ft_putchar('\n');
 	ft_putendl("------");
 }

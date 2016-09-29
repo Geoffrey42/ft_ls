@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 20:29:41 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:29:52 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 17:53:23 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void		recursive_call(t_list *recursive)
 	t_data	*content;
 
 	content = (t_data *)recursive->content;
+	content->first_call = 1;
 	if ((content->flags & UPP_R_FLAG))
 	{
 		merge_sort(&recursive);

@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/05 11:28:09 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 10:19:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 14:03:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			display_major_minor(struct stat file_stat);
 
 //display_size.c.c
 
-void			display_major_minor(struct stat file_stat);
+int				empty_dir(t_data *dir);
 void			display_size(struct stat file_stat);
 void			print_total_size(size_t size);
 size_t			sum_file_sizes(t_data *directory, struct dirent *file);

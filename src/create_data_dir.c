@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 22:21:29 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 16:11:35 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ t_data	*initialize_data_dir(char *name, char *parent, t_data *info)
 	data_dir->error = check_if_error_dir(data_dir->pathname);
 	data_dir->flags = info->flags;
 	data_dir->nb_dir = info->nb_dir;
-	data_dir->first_call = info->first_call;
+	if (data_dir->flags & UPP_R_FLAG)
+		data_dir->first_call = 1;
+	else
+		data_dir->first_call = info->first_call;
 	return (data_dir);
 }
 

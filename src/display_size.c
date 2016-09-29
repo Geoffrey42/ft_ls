@@ -6,11 +6,37 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 17:25:08 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/27 17:25:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/29 14:04:49 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_ls.h"
+
+int			empty_dir(t_data *dir)
+{
+	struct dirent	*file;
+	DIR				*dirp;
+	int				hidden;
+	int				turns;
+
+	hidden = 0;
+	turns = 0;
+	if (dir->flags & LOW_A_FLAG)
+		return (0);
+	if (!(dirp = opendir(dir->name)))
+		return (1);
+	while ((file = readdir(dirp)))
+	{
+		if (ft_strcmp(file->d_name, ".") == 0 ||
+			ft_strcmp(file->d_name, "..") == 0)
+			hidden++;
+		turns++;
+	}
+	closedir(dirp);
+	if (hidden == 2 && turns == 2)
+		return (1);
+	return (0);
+}
 
 void		display_size(struct stat file_stat)
 {
@@ -45,6 +71,8 @@ void		display_total_size(t_data *directory)
 	DIR				*dirp;
 
 	size = 0;
+	if (empty_dir(directory))
+		return ;
 	if (!(dirp = opendir(directory->name)))
 		return ;
 	while ((file = readdir(dirp)))
