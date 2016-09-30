@@ -6,7 +6,7 @@
 #    By: ggane <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 10:38:58 by ggane             #+#    #+#              #
-#    Updated: 2016/06/28 11:25:39 by ggane            ###   ########.fr        #
+#    Updated: 2016/09/30 09:33:04 by ggane            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,8 @@ ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c ft_strsplit.c \
 ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c get_next_line.c \
 is_empty.c btree_delete.c 
 OBJ = $(SRC:.c=.o)
+INC = ./inc/
+
 $(NAME): $(OBJ)
 		ar rc $(NAME) $(OBJ)
 		ranlib $(NAME)
