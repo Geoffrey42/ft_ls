@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:01:47 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 20:09:33 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:06:22 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void		display_new_line(t_list *list)
 {
-	t_data	*content;
-	t_data	*tmp;
+	t_data			*content;
+	t_data			*tmp;
+	struct stat		stat;
 
 	content = NULL;
 	tmp = NULL;
 	if (list->next)
 	{
 		content = (t_data *)list->next->content;
-		if (content->error == 0)
+		lstat(content->pathname, &stat);
+		if (content->error != 2 && S_ISDIR(stat.st_mode))
 			ft_putchar('\n');
 	}
 }

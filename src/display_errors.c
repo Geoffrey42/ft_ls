@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/06 20:05:21 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 11:07:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:06:24 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	display_permission_denied(t_data *content)
 {
-	ft_putchar('\n');
 	display_dir_title(content);
 	ft_putstr_fd("ls: ", 2);
 	ft_putstr_fd(content->name, 2);

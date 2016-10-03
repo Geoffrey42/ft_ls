@@ -6,7 +6,7 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 20:09:38 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:06:17 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void		files_list(t_list *files)
 		}
 		files = files->next;
 	}
-	if (check_flags_for_new_line(content) && stop != 0)
-		ft_putchar('\n');
 }
 
 t_list		*display_only_directories(t_list *directories)
@@ -63,7 +61,7 @@ t_list		*directories_list(t_list *directories)
 	{
 		content = (t_data *)tmp->content;
 		recursive = display_only_directories(tmp);
-		if (recursive)
+		if (recursive && (content->flags & UPP_R_FLAG))
 		{
 			ft_putchar('\n');
 			recursive_call(recursive);
