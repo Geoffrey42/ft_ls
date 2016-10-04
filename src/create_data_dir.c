@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/10 15:40:44 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 16:11:35 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:36:58 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 int		check_if_error_dir(char *name)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/30 11:06:17 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:47:29 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void		files_list(t_list *files)
 {

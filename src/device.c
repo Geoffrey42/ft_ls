@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/27 17:15:57 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 08:57:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:38:09 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 int			check_special_file(struct stat file_stat)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:28:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 21:15:05 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:45:04 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 t_data	*parse_prompt(int ac, char **av)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:48 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 10:31:51 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:45:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void	check_dir_position(t_data *info_line)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/08 20:58:38 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 10:29:51 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:45:44 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 int		check_double_dash(t_data *info_line, int i)
 {

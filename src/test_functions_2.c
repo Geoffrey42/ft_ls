@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:57:08 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 12:11:43 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:47:11 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void	switcher(int *switcher, int flags)
 {

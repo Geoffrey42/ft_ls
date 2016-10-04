@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/14 15:09:59 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:17:32 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:36:06 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 int		choose_compare_list_function(t_list *item1, t_list *item2)
 {

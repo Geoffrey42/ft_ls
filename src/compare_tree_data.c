@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:36:52 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/22 18:52:50 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:36:32 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 int		cb_timecmp_tree(void *item1, void *item2)
 {

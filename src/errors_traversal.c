@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/25 11:06:03 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/25 11:09:15 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:40:03 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void	zero_flags(t_list *error)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/22 18:22:30 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/24 14:00:59 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:37:38 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 t_list	*insert_data_in_list(t_list *directories, char *name, t_data *info_line)
 {

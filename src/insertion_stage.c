@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 15:30:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 18:15:11 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:40:33 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 t_cmpf	choose_compare_tree_function(t_data *data)
 {

@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/28 20:29:41 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/29 20:09:36 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:47:40 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void		initialize_first_call(t_list *list)
 {

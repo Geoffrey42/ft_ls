@@ -6,11 +6,11 @@
 /*   By: ggane <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 11:54:11 by ggane             #+#    #+#             */
-/*   Updated: 2016/09/28 20:31:13 by ggane            ###   ########.fr       */
+/*   Updated: 2016/09/30 11:40:54 by ggane            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_ls.h"
+#include "ft_ls.h"
 
 void		display_link(t_data *data)
 {
