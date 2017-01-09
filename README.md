@@ -1,5 +1,5 @@
 # ft_ls
-My 42 project of ft_ls
+ft_ls project for 42 school. This project consists in coding ls UNIX command
 
 Description :
 
@@ -8,11 +8,11 @@ Ce projet consiste à coder une des commandes UNIX les plus utilisées : ls .
 
 Objectifs :
 
-Arboresence des fichiers et répertoires
-Types et caractéristiques des fichiers
+- Arboresence des fichiers et répertoires
+- Types et caractéristiques des fichiers
 
 Skills :
 
-Algorithms & AI
-Imperative programming
-Unix
+- Algorithms & AI
+- Imperative programming
+- Unix
